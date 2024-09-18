@@ -1,35 +1,62 @@
-<?php 
-include "admin/koneksi.php";
-# Baca variabel Form (If Register Global ON)
-$TxtNama 	= $_REQUEST['TxtNama'];
-$RbKelamin 	= $_POST['cbojk'];
-$TxtUmur	= $_REQUEST['TxtUmur'];
-$TxtAlamat 	= $_REQUEST['TxtAlamat'];
-$NOIP = $_SERVER['REMOTE_ADDR'];
-$namaorangtua=$_POST['textnamaorangtua'];
-# Validasi Form
-if (trim($TxtNama)=="") {
-	include "pasien_add_fm.php";
-	echo "Nama belum diisi, ulangi kembali";
-}
-elseif (trim($TxtUmur)=="") {
-	include "pasien_add_fm.php";
-	echo "Umur masih kosong, ulangi kembali";
-}
-elseif (trim($TxtAlamat)=="") {
-	include "pasien_add_fm.php";
-	echo "Alamat masih kosong, ulangi kembali";
-}
-else {
-    $NOIP = $_SERVER['REMOTE_ADDR'];
+<?php
+include "admin/koneksi.php"; // Koneksi ke database
 
-	//$sqldel = "DELETE FROM tmp_pasien WHERE noip='$NOIP'";	mysql_query($sqldel, $koneksi);
-	
-	$sql  = " INSERT INTO tbpasien (nama,kelamin,umur,alamat,noip,tanggal,namaorangtua) 
-		 	  VALUES ('$TxtNama','$RbKelamin','$TxtUmur','$TxtAlamat','$NOIP',NOW(),'$namaorangtua')";
-	mysqli_query($koneksi,$sql) 
-		  or die ("SQL Error 2".mysqli_error($koneksi));
-	echo "<meta http-equiv='refresh' content='0; url=konsultasifm2.php'>";
+# Baca variabel dari form menggunakan POST
+$TextNamaAnjing = $_POST['textnamaAnjing'];
+$CboKelamin = $_POST['cbojk']; // Jenis kelamin anjing
+$TxtUmurAnjing = $_POST['TxtUmur'];
+$TxtJenisAnjing = $_POST['TxtJenisAnjing'];
+$TxtBeratBadanAnjing = $_POST['TxtBeratBadanAnjing'];
+
+# Dapatkan IP pengguna
+$NOIP = $_SERVER['REMOTE_ADDR'];
+
+# Validasi Form Input
+if (trim($TextNamaAnjing) == "") {
+    include "pasien_add_fm.php";
+    echo "<script>alert('Masukkan nama anjing!');</script>";
+    exit;
+} elseif (trim($CboKelamin) == "0") {
+    include "pasien_add_fm.php";
+    echo "<script>alert('Pilih jenis kelamin anjing!');</script>";
+    exit;
+} elseif (trim($TxtUmurAnjing) == "") {
+    include "pasien_add_fm.php";
+    echo "<script>alert('Masukkan umur anjing!');</script>";
+    exit;
+} elseif (trim($TxtJenisAnjing) == "") {
+    include "pasien_add_fm.php";
+    echo "<script>alert('Masukkan jenis anjing!');</script>";
+    exit;
+} elseif (trim($TxtBeratBadanAnjing) == "") {
+    include "pasien_add_fm.php";
+    echo "<script>alert('Masukkan berat badan anjing!');</script>";
+    exit;
+} else {
+    # Jika validasi berhasil, masukkan data ke database (tanpa menyimpan data pribadi)
+    $sql = "INSERT INTO tbpasien (
+                nama_anjing, 
+                jenis_kelamin_anjing, 
+                umur_anjing, 
+                jenis_anjing, 
+                berat_badan_anjing, 
+                noip, 
+                tanggal
+            ) VALUES (
+                '$TextNamaAnjing',
+                '$CboKelamin',
+                '$TxtUmurAnjing',
+                '$TxtJenisAnjing',
+                '$TxtBeratBadanAnjing',
+                '$NOIP',
+                NOW()
+            )";
+
+    # Jalankan query dan cek apakah ada error
+    if (mysqli_query($koneksi, $sql)) {
+        echo "<meta http-equiv='refresh' content='0; url=konsultasifm2.php'>";
+    } else {
+        echo "SQL Error: " . mysqli_error($koneksi);
+    }
 }
 ?>
-	
