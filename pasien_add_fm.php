@@ -4,52 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* editing pada navbar */
+        /* Navbar styling */
         .navbar {
-            background-color: #1D93B3; /* Warna latar belakang navbar */
-            margin-bottom: 0; /* Menghilangkan margin bawah */
-            border: none; /* Menghilangkan border */
-            box-shadow: none; /* Menghilangkan shadow */
+            background-color: #1D93B3;
+            margin-bottom: 0;
+            border: none;
+            box-shadow: none;
         }
 
-        .navbar .navbar-brand, 
-        .navbar .nav > li > a, 
+        .navbar .navbar-brand,
+        .navbar .nav > li > a,
         .navbar .btn {
-            color: #000; /* Warna teks di navbar menjadi hitam */
-            font-size: 12pt; /* Ukuran font di navbar */
-            line-height: 20px; /* Menjaga agar teks berada di tengah navbar */
-            font-weight: 600; /* Menjadikan teks bold */
+            color: #000;
+            font-size: 12pt;
+            line-height: 20px;
+            font-weight: 600;
         }
 
         .navbar .btn {
-            border-radius: 12px; /* Corner radius button */
-            border: none; /* Menghilangkan border pada tombol */
-            box-shadow: none; /* Menghilangkan shadow pada tombol */
-            background-color: #90B5BE; /* Latar belakang button */
+            border-radius: 12px;
+            border: none;
+            background-color: #90B5BE;
         }
 
         .navbar .navbar-nav > li > a:hover {
-            background-color: #6CBED2; /* Warna hover baru */
-            color: #fff; /* Warna teks saat hover */
+            background-color: #6CBED2;
+            color: #fff;
         }
 
-        .navbar .navbar-nav > .active > a, 
+        .navbar .navbar-nav > .active > a,
         .navbar .navbar-nav > .active > a:hover {
-            color: #fff; /* Warna teks item aktif */
-            background-color: transparent; /* Menghapus latar belakang aktif */
-            border: none; /* Menghilangkan border pada item aktif */
+            color: #fff;
+            background-color: transparent;
+            border: none;
         }
 
-        /* style form */
+        /* Form styling */
         .container-form {
             margin-top: 50px;
-            max-width: 1000px; /* Set a max-width to limit the form size */
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 4px;
@@ -60,50 +59,52 @@
             margin-bottom: 50px;
         }
 
-        /* Styling select box Jenis Kelamin Anjing */
+        /* Dropdown styling */
         .mb-5 select#cbojk {
-            margin-left: 20px; /* Memberikan jarak 20px di sebelah kanan */
-            width: 200px; /* Lebar select box */
-			height: 40px;
-			border-radius: 10px;
+            margin-left: 20px;
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
         }
 
-                /* Membatasi tinggi dropdown untuk muncul scroll bar setelah 5 item */
-        .form-select2{
-            max-height: 200px; /* Batas tinggi untuk 5 item, sekitar 40px per item */
-            overflow-y: auto;  /* Mengaktifkan scroll bar vertikal */
+        .mb-5 select#cbojk:focus {
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        /* Add shadow effect to form inputs */
+        .mb-5 select#cbojk {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* Input and select box shadow effects */
         .form-control, .form-select {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
         }
 
         .form-control:focus, .form-select:focus {
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on focus */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        /* Pengaturan Flexbox untuk label jenis anjing dan select box */
+        /* Flexbox for form layout */
         .form-group-flex {
             display: flex;
-            align-items: center; /* Posisikan secara vertikal di tengah */
+            align-items: center;
         }
 
-        /* Pengaturan jarak label jenis anjing dari kiri */
         .form-group-flex label {
-            margin-right: 85px; /* Jarak antara label dan select */
+            margin-right: 85px;
         }
 
-   
-        /* Select box berada di sebelah kanan label */
         .form-group-flex select {
-            width: 200px; /* Lebar select box */
-			height: 40px;
-			border-radius: 10px;
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
         }
-        
-        /* Style for units (kg) */
+
+        /* Input group styling */
         .input-group-text {
             background-color: #1D93B3;
             color: white;
@@ -112,19 +113,43 @@
             border-radius: 0px 4px 4px 0px;
         }
 
-        /* Style for combined input field with unit */
         .input-group {
             display: flex;
             align-items: center;
         }
 
+        /* Custom select styling */
+        .custom-select {
+            width: 220px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #747474;
+            padding: 5px;
+            border: none;
+            font-size: 14px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .custom-select option {
+            background-color: #4A4A4A;
+            color: white;
+        }
+
+        .custom-select option:hover {
+            background-color: #747474;
+        }
+
+        .custom-select:hover {
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-    <!-- membuat menu navigasi -->
+    <!-- Navbar -->
     <nav class="navbar navbar-default">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -138,18 +163,18 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="pasien_add_fm.php">Proses Diagnosa<span class="sr-only">(current)</span></a></li>
+                    <li><a href="pasien_add_fm.php">Proses Diagnosa</a></li>
                     <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
 
-    <!-- Modal -->
+    <!-- Modal for login -->
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -177,6 +202,7 @@
         </div>
     </div>
 
+    <!-- Modal for registration -->
     <div class="modal fade" id="modal-daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -207,15 +233,14 @@
             </div>
         </div>
     </div>
-    <!-- akhir modal -->
 
+    <!-- Form container -->
     <div class="container-form">
-        <!-- membuat jumbotron -->
         <div class="jumbotron">
             <center>
                 <h2>Masukkan Data Diri Pemilik dan Anjing Anda</h2>
             </center>
-            <form onSubmit="return validasi(this)" method="post" name="form1" target="_self" action="pasienaddsim.php">
+            <form method="post" name="form1" target="_self" action="pasienaddsim.php">
                 <div class="mb-3">
                     <label for="TxtNamaPemilik" class="form-label">Nama Pemilik</label>
                     <input type="text" class="form-control" id="TxtNamaPemilik" name="TxtNamaPemilik" maxlength="30" placeholder="Masukkan Nama lengkap Anda" autocomplete="off">
@@ -231,54 +256,52 @@
                     <input type="text" class="form-control" id="textnamaAnjing" name="textnamaAnjing" maxlength="25" placeholder="Masukkan Nama Anjing Anda" autocomplete="off">
                 </div>
 
-                    <div class="mb-5">
-                    <label for="disabledSelect" class="form-label">Jenis Kelamin Anjing</label>
-                    <select id="cbojk" name="cbojk" class="form-select">
+                <div class="mb-3 form-group-flex">
+                    <label for="TxtJenisAnjing" class="form-label">Jenis Anjing</label>
+                    <input list="daftarJenisAnjing" id="TxtJenisAnjing" name="TxtJenisAnjing" class="form-control" placeholder="Pilih atau ketik jenis anjing" autocomplete="off">
+                    <datalist id="daftarJenisAnjing">
+                        <option value="Labrador Retriever">
+                        <option value="Golden Retriever">
+                        <option value="Dachshund">
+                        <option value="Beagle">
+                        <option value="German Shepherd">
+                        <option value="Pomeranian">
+                        <option value="Bulldog">
+                        <option value="Shih Tzu">
+                        <option value="Poodle">
+                        <option value="Pekingese">
+                        <option value="Chihuahua">
+                        <option value="Anjing Kintamani">
+                        <option value="Anjing Kedu">
+                        <option value="Anjing Bali">
+                        <option value="Anjing Pekingese Bali">
+                        <option value="Anjing Tosa">
+                        <option value="Siberian Husky">
+                        <option value="Rottweiler">
+                        <option value="Boxer">
+                        <option value="Cocker Spaniel">
+                        <option value="Bichon Frise">
+                        <option value="Welsh Corgi">
+                        <option value="Dalmatian">
+                        <option value="Keeshond">
+                        <option value="Papillon">
+                        <option value="Bullmastiff">
+                        <option value="Dobermann">
+                    </datalist>
+                </div>
+
+                <div class="mb-5">
+                    <label for="cbojk" class="form-label">Jenis Kelamin Anjing</label>
+                    <select id="cbojk" name="cbojk" class="custom-select">
                         <option value="0" selected>Pilih Jenis Kelamin Anjing</option>
                         <option value="Jantan">Jantan</option>
                         <option value="Betina">Betina</option>
                     </select>
                 </div>
 
-
-                <!-- Penggunaan Flexbox untuk Jenis Anjing -->
-                <div class="mb-3 form-group-flex">
-                    <label for="TxtJenisAnjing" class="form-label">Jenis Anjing</label>
-                    <select id="TxtJenisAnjing" name="TxtJenisAnjing" class="form-select2">
-                        <option value="0" selected>Pilih Jenis Anjing</option>
-                        <option value="Labrador Retriever">Labrador Retriever</option>
-                        <option value="Golden Retriever">Golden Retriever</option>
-                        <option value="Dachshund">Dachshund</option>
-                        <option value="Beagle">Beagle</option>
-                        <option value="German Shepherd">German Shepherd</option>
-                        <option value="Pomeranian">Pomeranian</option>
-                        <option value="Bulldog">Bulldog</option>
-                        <option value="Shih Tzu">Shih Tzu</option>
-                        <option value="Pekingese">Pekingese</option>
-                        <option value="Chihuahua">Chihuahua</option>
-                        <option value="Anjing Kintamani">Anjing Kintamani</option>
-                        <option value="Anjing Kedu">Anjing Kedu</option>
-                        <option value="Anjing Bali">Anjing Bali</option>
-                        <option value="Anjing Pekingese Bali">Anjing Pekingese Bali</option>
-                        <option value="Anjing Tosa">Anjing Tosa</option>
-                        <option value="Siberian Husky">Siberian Husky</option>
-                        <option value="Rottweiler">Rottweiler</option>
-                        <option value="Boxer">Boxer</option>
-                        <option value="Cocker Spaniel">Cocker Spaniel</option>
-                        <option value="Bichon Frise">Bichon Frise</option>
-                        <option value="Welsh Corgi">Welsh Corgi</option>
-                        <option value="Dalmatian">Dalmatian</option>
-                        <option value="Keeshond">Keeshond</option>
-                        <option value="Papillon">Papillon</option>
-                        <option value="Bullmastiff">Bullmastiff</option>
-                        <option value="Dobermann">Dobermann</option>
-                    </select>
-                </div>
-
-
                 <div class="mb-3">
                     <label for="TxtUmur" class="form-label">Umur Anjing</label>
-                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="8" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)" autocomplete="off">
+                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="15" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)" autocomplete="off">
                 </div>
 
                 <div class="mb-3">
@@ -289,21 +312,15 @@
                     </div>
                 </div>
 
-                <!-- Changed button colors -->
                 <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-success" name="Submit">Lanjut</button> <!-- Green for Lanjut -->
-                    <button type="reset" class="btn btn-warning" name="Submit2">Reset</button> <!-- Yellow for Reset -->
+                    <button type="submit" class="btn btn-success" name="Submit">Lanjut</button>
+                    <button type="reset" class="btn btn-warning" name="Submit2">Reset</button>
                 </div>
             </form>
         </div>
-        <!-- akhir jumbotron -->
-
-        <div class="col-sm-6 col-md-3"></div>
-        <br><br><br><br><br><br>
     </div>
-    <br>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer class="bg-primary text-white text-center py-4" style="background-color: #1D93B3; margin-top: 100px;">
         <div class="container">
             <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">

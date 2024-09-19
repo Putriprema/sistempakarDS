@@ -2,7 +2,7 @@
 $host="localhost";
 $user="root";
 $pass="";
-$dbName="gizipakar";
+$dbName="db_kulitanjing";
 $koneksi=mysqli_connect($host,$user,$pass);
 $db=mysqli_select_db($koneksi,$dbName)or die("<center color='red'><strong>" .mysqli_error($koneksi)."</strong></center>"
 ."<center><font color='red'><strong>Koneksi Gagal...! karena database tidak ada</strong></font></center><center><p align='center'>Silahkan buat database dan periksa koneksi databsae </p>

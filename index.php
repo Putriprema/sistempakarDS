@@ -157,6 +157,7 @@
         .img-fluid {
             max-width: 150px; /* Membatasi ukuran gambar */
             margin-bottom: 50px; /* Jarak bawah gambar dengan paragraf */
+            margin-top: 70px;
         }
 
         .mt-4 {
@@ -174,6 +175,7 @@
             line-height: 1.6;
             text-align: justify;
             margin-left: 20px;
+            margin-top: 70px;
         }
 
         /* Styling untuk menyelaraskan teks dan gambar secara vertikal */
@@ -188,7 +190,7 @@
             color: #000;
             font-weight: 600;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 70px;
             margin-bottom: 20px;
         }
 
@@ -199,6 +201,7 @@
             margin-right: auto;
             width: 200px; /* Ukuran gambar icon4 bisa disesuaikan */
             margin-bottom: 30px;
+            margin-top: 70px;
         }
 
         /* Styling untuk paragraf di bawah gambar */
@@ -213,7 +216,6 @@
             margin-bottom: 150px; /* Jarak bawah paragraf */
         }
     </style>
-
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -437,7 +439,7 @@
         <div class="container">
             <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">
             <p>&copy; 2024 Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing Dengan Metode Dempster Shafer</p>
-            <p>Developed by Putri Prema Paramitha</p>
+            <p>Developed by Putri Prema Paramitha | putriprema14@gmail.com</p>
         </div>
     </footer>
 </body>

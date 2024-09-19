@@ -1,3 +1,6 @@
+<!--File ini dirancang untuk membantu pengguna (dokter atau pasien) mendiagnosa kemungkinan penyakit terkait gizi buruk berdasarkan gejala yang dialami. --!>
+
+
 <!DOCTYPE html>
 <html>
 <head>
