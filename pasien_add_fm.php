@@ -48,16 +48,30 @@
 
         /* style form */
         .container-form {
-            margin-top: 60px;
+            margin-top: 50px;
             max-width: 1000px; /* Set a max-width to limit the form size */
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 50px;
+            margin-bottom: 4px;
         }
 
         .mb-3 {
             margin-top: 50px;
             margin-bottom: 50px;
+        }
+
+        /* Styling select box Jenis Kelamin Anjing */
+        .mb-5 select#cbojk {
+            margin-left: 20px; /* Memberikan jarak 20px di sebelah kanan */
+            width: 200px; /* Lebar select box */
+			height: 40px;
+			border-radius: 10px;
+        }
+
+                /* Membatasi tinggi dropdown untuk muncul scroll bar setelah 5 item */
+        .form-select2{
+            max-height: 200px; /* Batas tinggi untuk 5 item, sekitar 40px per item */
+            overflow-y: auto;  /* Mengaktifkan scroll bar vertikal */
         }
 
         /* Add shadow effect to form inputs */
@@ -70,24 +84,25 @@
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on focus */
         }
 
-        /* Pengaturan Flexbox untuk label dan select box */
+        /* Pengaturan Flexbox untuk label jenis anjing dan select box */
         .form-group-flex {
             display: flex;
             align-items: center; /* Posisikan secara vertikal di tengah */
         }
 
-        /* Pengaturan jarak label dari kiri */
+        /* Pengaturan jarak label jenis anjing dari kiri */
         .form-group-flex label {
-            margin-right: 70px; /* Jarak antara label dan select */
+            margin-right: 85px; /* Jarak antara label dan select */
         }
 
+   
         /* Select box berada di sebelah kanan label */
         .form-group-flex select {
             width: 200px; /* Lebar select box */
 			height: 40px;
 			border-radius: 10px;
         }
-
+        
         /* Style for units (kg) */
         .input-group-text {
             background-color: #1D93B3;
@@ -203,38 +218,34 @@
             <form onSubmit="return validasi(this)" method="post" name="form1" target="_self" action="pasienaddsim.php">
                 <div class="mb-3">
                     <label for="TxtNamaPemilik" class="form-label">Nama Pemilik</label>
-                    <input type="text" class="form-control" id="TxtNamaPemilik" name="TxtNamaPemilik" maxlength="30" placeholder="Masukkan Nama lengkap Anda">
+                    <input type="text" class="form-control" id="TxtNamaPemilik" name="TxtNamaPemilik" maxlength="30" placeholder="Masukkan Nama lengkap Anda" autocomplete="off">
                 </div>
 
                 <div class="mb-3">
                     <label for="TxtTelpPemilik" class="form-label">No Telp Pemilik</label>
-                    <input type="text" class="form-control" id="TxtTelpPemilik" name="TxtTelpPemilik" maxlength="60" placeholder="Masukkan No Telp Anda">
+                    <input type="text" class="form-control" id="TxtTelpPemilik" name="TxtTelpPemilik" maxlength="60" placeholder="Masukkan No Telp Anda" autocomplete="off">
                 </div>
 
                 <div class="mb-3">
                     <label for="textnamaAnjing" class="form-label">Nama Anjing</label>
-                    <input type="text" class="form-control" id="textnamaAnjing" name="textnamaAnjing" maxlength="25" placeholder="Masukkan Nama Anjing Anda">
+                    <input type="text" class="form-control" id="textnamaAnjing" name="textnamaAnjing" maxlength="25" placeholder="Masukkan Nama Anjing Anda" autocomplete="off">
                 </div>
 
-                <div class="mb-5">
+                    <div class="mb-5">
                     <label for="disabledSelect" class="form-label">Jenis Kelamin Anjing</label>
                     <select id="cbojk" name="cbojk" class="form-select">
-                        <option value="0" selected>Jenis Kelamin</option>
+                        <option value="0" selected>Pilih Jenis Kelamin Anjing</option>
                         <option value="Jantan">Jantan</option>
                         <option value="Betina">Betina</option>
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label for="TxtUmur" class="form-label">Umur Anjing</label>
-                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="8" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)">
-                </div>
 
                 <!-- Penggunaan Flexbox untuk Jenis Anjing -->
                 <div class="mb-3 form-group-flex">
                     <label for="TxtJenisAnjing" class="form-label">Jenis Anjing</label>
-                    <select id="TxtJenisAnjing" name="TxtJenisAnjing" class="form-select">
-                        <option value="" selected>Pilih Jenis Anjing</option>
+                    <select id="TxtJenisAnjing" name="TxtJenisAnjing" class="form-select2">
+                        <option value="0" selected>Pilih Jenis Anjing</option>
                         <option value="Labrador Retriever">Labrador Retriever</option>
                         <option value="Golden Retriever">Golden Retriever</option>
                         <option value="Dachshund">Dachshund</option>
@@ -264,10 +275,16 @@
                     </select>
                 </div>
 
+
+                <div class="mb-3">
+                    <label for="TxtUmur" class="form-label">Umur Anjing</label>
+                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="8" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)" autocomplete="off">
+                </div>
+
                 <div class="mb-3">
                     <label for="TxtBeratBadanAnjing" class="form-label">Berat Badan Anjing</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="TxtBeratBadanAnjing" name="TxtBeratBadanAnjing" maxlength="60" placeholder="Masukkan Berat badan Anjing Anda">
+                        <input type="text" class="form-control" id="TxtBeratBadanAnjing" name="TxtBeratBadanAnjing" maxlength="60" placeholder="Masukkan Berat badan Anjing Anda" autocomplete="off">
                         <span class="input-group-text">kg</span>
                     </div>
                 </div>
@@ -291,7 +308,7 @@
         <div class="container">
             <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">
             <p>&copy; 2024 Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing Dengan Metode Dempster Shafer</p>
-            <p>Developed by Putri Prema Paramitha</p>
+            <p>Developed by Putri Prema Paramitha | putriprema14@gmail.com</p>
         </div>
     </footer>
 </body>
