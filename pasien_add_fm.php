@@ -301,7 +301,7 @@
 
                 <div class="mb-3">
                     <label for="TxtUmur" class="form-label">Umur Anjing</label>
-                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="15" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)" autocomplete="off">
+                    <input type="text" class="form-control" id="TxtUmur" name="TxtUmur" maxlength="20" placeholder="Masukkan Umur Anjing Anda (contoh: 2 tahun atau 6 bulan)" autocomplete="off">
                 </div>
 
                 <div class="mb-3">
