@@ -1,14 +1,50 @@
-<!--File ini dirancang untuk membantu pengguna (dokter atau pasien) mendiagnosa kemungkinan penyakit terkait gizi buruk berdasarkan gejala yang dialami. --!>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gizi Buruk | DempsterShafer</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
-	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <style type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+	 /* Menghilangkan bingkai pada navbar */
+	 .navbar {
+            background-color: #1D93B3; /* Warna latar belakang navbar */
+            margin-bottom: 0; /* Menghilangkan margin bawah */
+            border: none; /* Menghilangkan border */
+            box-shadow: none; /* Menghilangkan shadow */
+        }
+
+        .navbar .navbar-brand, 
+        .navbar .nav > li > a, 
+        .navbar .btn {
+            color: #000; /* Warna teks di navbar menjadi hitam */
+            font-size: 12pt; /* Ukuran font di navbar */
+            line-height: 20px; /* Menjaga agar teks berada di tengah navbar */
+            font-weight: 600; /* Menjadikan teks bold */
+        }
+
+        .navbar .btn {
+            border-radius: 12px; /* Corner radius button */
+            border: none; /* Menghilangkan border pada tombol */
+            box-shadow: none; /* Menghilangkan shadow pada tombol */
+            background-color: #90B5BE; /* Latar belakang button */
+        }
+
+        .navbar .navbar-nav > li > a:hover {
+            background-color: #6CBED2; /* Warna hover baru */
+            color: #fff; /* Warna teks saat hover */
+        }
+
+        .navbar .navbar-nav > .active > a, 
+        .navbar .navbar-nav > .active > a:hover {
+            color: #fff; /* Warna teks item aktif */
+            background-color: transparent; /* Menghapus latar belakang aktif */
+            border: none; /* Menghilangkan border pada item aktif */
+        }
+
 .form { width:99%; background:linear-gradient(to left, #FFF, #EEE); border:1px solid #CCC; border-radius:5px 5px; padding:3px 3px 3px 5px;}
 .form p{ font-weight:bold; font-size:12pt;}
 p { border:0px solid #03F;}
@@ -30,34 +66,33 @@ p { border:0px solid #03F;}
 </style>
 </head>
 <body>	
-	<!-- membuat menu navigasi -->
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.php"><?php include("header.php");?></a>
-			</div>
+	 <!-- membuat menu navigasi -->
+	 <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php"><?php include("header.php"); ?></a>
+            </div>
 			
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="pasien_add_fm.php">Proses Diagnosa <span class="sr-only">(current)</span></a></li>
-					<li><a href="informasi.php">Demo</a></li>
-                    <li><a href="profil.php">Profil</a></li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="pasien_add_fm.php">Proses Diagnosa<span class="sr-only">(current)</span></a></li>
                     <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
-				</ul>
+                </ul>
 				
-				<ul class="nav navbar-nav navbar-right">					
-					<li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>	
+                <ul class="nav navbar-nav navbar-right">					
+                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>	
 
 	<!-- Modal -->
 	<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -165,11 +200,11 @@ if(isset($_POST['evidence'])){
 			while($dataG=mysqli_fetch_array($queryG)){ echo $dataG['gejala']."<br>";}
 			}
 		echo "</div>";
-		$sql = "SELECT GROUP_CONCAT(b.kdpenyakit), a.cf, a.id_evidence
+		$sql = "SELECT GROUP_CONCAT(b.kdpenyakit), a.belief , a.id_gejalaKulit
 			FROM tb_rules a
-			JOIN tb_penyakit b ON a.id_problem=b.id
-			WHERE a.id_evidence IN(".implode(',',$_POST['evidence']).") 
-			GROUP BY a.id_evidence ORDER BY a.id_evidence ASC ";
+			JOIN tb_penyakit b ON a.id_penyakitKulit=b.id_penyakit
+			WHERE a.id_gejalaKulit IN(".implode(',',$_POST['evidence']).") 
+			GROUP BY a.id_gejalaKulit ORDER BY a.id_gejalaKulit ASC ";
 		$result=$db->query($sql);
 		$evidence=array();
 		//$gejalaSelect=array();
@@ -422,20 +457,14 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 	
 	<div class="clearfix"></div>
 		
-	<nav class="navbar navbar-default" style="bottom: 0;margin: 0">
-		<div class="container">	
-			<center>
-				
-			<ul class="nav navbar-nav">
-				<li><a href="#">Copyright @ 2020 Rose House Squad. All rights reserved.</a></li>				
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Develop by RH Squad</a></li>									
-			</ul>
-			</center>		
-		</div>
-	</nav>
+	 <!-- footer  -->
+	 <footer class="bg-primary text-white text-center py-4" style="background-color: #1D93B3;">
+        <div class="container">
+            <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">
+            <p>&copy; 2024 Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing Dengan Metode Dempster Shafer</p>
+            <p>Developed by Putri Prema Paramitha | putriprema14@gmail.com</p>
+        </div>
+    </footer>
 	
 </body>
 </html>
