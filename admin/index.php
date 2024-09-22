@@ -327,7 +327,9 @@ h1 { font-size: 30pt; }
         <div class="templatemo-content">
           <ol class="breadcrumb">
           <li><a href="index.php" style="color: black; font-size: 12pt;">Admin Panel</a></li>
-      <li class="active" style="color: black; font-size: 11pt;">Rule Dempster Shafer</li>
+          <li class="active" style="font-size: 11pt;">
+    <a href="basis_pengetahuan.php" style="color: black;">Rule Dempster Shafer</a>
+</li>
           </ol>
           <h1>Dashboard</h1>
           <a href="#" class="list-group-item active">
