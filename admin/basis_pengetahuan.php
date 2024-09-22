@@ -2,7 +2,13 @@
 <head>
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>Gizi Buruk | DempsterShafer</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
@@ -12,10 +18,18 @@ Dashboard Template
 http://www.templatemo.com/preview/templatemo_415_dashboard
 -->
 </head>
+
+<style>
+
+body {
+        font-family: 'Poppins', sans-serif;
+    }
+    </style>  
+
 <body>
   <div class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
-        <div class="logo"><h1>Dashboard - Admin Pakar Gangguan Gizi Buruk | Metode Dempster Shafer</h1></div>
+        <div class="logo"><h1>Dashboard - Admin Pakar Diagnosa Dini Penyakit Kulit Anjing | Metode Dempster Shafer</h1></div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -24,6 +38,8 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
         </button> 
       </div>   
     </div>
+
+    <!-- Bagian Sidebar editing-->
     <div class="template-page-wrapper">
       <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
@@ -65,8 +81,10 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             <li class="active">Rule Dempster Shafer</li>
           </ol>
           <h1>Data Rule | Basis Pengetahuan</h1>
+
           <!-- Trigger the modal with a button -->
-<!-- Modal -->
+
+<!-- Modal ini digunakan untuk menambah data penyakit dan solusi ke dalam sistem -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -107,6 +125,8 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             <div class="col-md-12">
               <div class="table-responsive">
               <div class="konten">
+
+<!-- Bagian ini adalah form untuk mengatur rule atau kaidah Dempster Shafer -->
 <form id="form1" name="form1" method="post" action="simpan_kaidah_produksi.php" enctype="multipart/form-data"><div>
   <table class="tab" width="650" border="0" align="center" cellpadding="4" cellspacing="1" bordercolor="#F0F0F0" bgcolor="#CCCC99">
       <tr bgcolor="#FFFFFF">
@@ -127,22 +147,22 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
 		 <select name="TxtKdPenyakit" id="TxtKdPenyakit">
 		   <option value="NULL">[ Daftar Penyakit ]</option>
 		   <?php 
-	$sqlp = "SELECT * FROM tb_penyakit ORDER BY id";
+	$sqlp = "SELECT * FROM tb_penyakit ORDER BY id_penyakit";
 	$qryp = mysqli_query($koneksi,$sqlp) 
 		    or die ("SQL Error: ".mysqli_error($koneksi));
 	while ($datap=mysqli_fetch_array($qryp)) {
-		if ($datap['id']==$kdsakit) {
+		if ($datap['id_penyakit']==$kdsakit) {
 			$cek ="selected";
 		}
 		else {
 			$cek ="";
 		}
-		$arrPenyakit["$datap[id]"]=$datap['nama_penyakit'];
+		$arrPenyakit["$datap[id_penyakit]"]=$datap['nama_penyakit'];
 		echo "<option value='$datap[id]' $cek>$datap[id]&nbsp;|&nbsp;$datap[nama_penyakit]</option>";
 	}
   ?>
 		   </select>
-		 CF<input type="text" name="cf" size="5"></strong></td>
+       belief<input type="text" name="belief" size="5"></strong></td>
         </tr>
       <tr bgcolor="#FFFFFF">
         <td>&nbsp;</td>
@@ -151,33 +171,36 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
     </table>
   </div>
 </form>
+
+
+<!-- Tabel ini digunakan untuk menampilkan daftar rule yang sudah diinputkan ke dalam sistem beserta gejala dan opsi untuk mengedit -->
 <table class="table table-striped table-hover table-bordered" >
 <thead>
   <tr>
     <th ><strong>#</strong></th>
     <th><strong>KD Gejala | Nama Gejala</strong><span style="float:right; margin-right:25px;"><strong></strong></span></th>
-    <?php $query_p=mysqli_query($koneksi,"SELECT id_problem FROM tb_rules GROUP BY id_problem");
+    <?php $query_p=mysqli_query($koneksi,"SELECT id_penyakitKulit FROM tb_rules GROUP BY id_penyakitKulit");
 	while($data_p=mysqli_fetch_array($query_p)){
 	?>
-    <th><?php $idp=$data_p['id_problem']; echo "$idp | "; print_r($arrPenyakit["$idp"]); ?><br><a href="edit_rule_base.php?kdpenyakit=<?php echo $data_p['id_problem'];?>">Edit Rule</a></th><?php }?>
+    <th><?php $idp=$data_p['id_penyakitKulit']; echo "$idp | "; print_r($arrPenyakit["$idp"]); ?><br><a href="edit_rule_base.php?kdpenyakit=<?php echo $data_p['id_penyakitKulit'];?>">Edit Rule</a></th><?php }?>
     </tr></thead>
     <?php
-    $query=mysqli_query($koneksi,"SELECT * FROM tb_rules GROUP BY id_evidence ORDER BY id_evidence ASC ")or die(mysqli_error());
+    $query=mysqli_query($koneksi,"SELECT * FROM tb_rules GROUP BY id_gejalaKulit ORDER BY id_gejalaKulit ASC ")or die(mysqli_error());
 	$no=0;
 	while($row=mysqli_fetch_array($query)){
-	$idpenyakit=$row['id_problem'];
+	$idpenyakit=$row['id_penyakitKulit'];
 	$no++;
 	?>
   <tr>
-    <td valign="top"><?php echo $row['id_evidence'];?></td>
-    <td><?php $idG=$row['id_evidence']; print_r($arrGejala["$idG"]);// echo $row['gejala'];?></td><?php $query_pb=mysqli_query($koneksi,"SELECT id_problem FROM tb_rules GROUP BY id_problem ");
+    <td valign="top"><?php echo $row['id_gejalaKulit'];?></td>
+    <td><?php $idG=$row['id_gejalaKulit']; print_r($arrGejala["$idG"]);// echo $row['gejala'];?></td><?php $query_pb=mysqli_query($koneksi,"SELECT id_penyakitKulit FROM tb_rules GROUP BY id_penyakitKulit ");
 	while($data_pb=mysqli_fetch_array($query_pb)){
 	?>
-    <td><?php $kdpenyakit_B=$data_pb['id_problem'];
-	$kdgejala_B=$row['id_evidence'];
-	$query_CG=mysqli_query($koneksi,"SELECT * FROM tb_rules WHERE id_problem='$kdpenyakit_B' AND id_evidence='$kdgejala_B' ");
+    <td><?php $kdpenyakit_B=$data_pb['id_penyakitKulit'];
+	$kdgejala_B=$row['id_gejalaKulit'];
+	$query_CG=mysqli_query($koneksi,"SELECT * FROM tb_rules WHERE id_penyakitKulit='$kdpenyakit_B' AND id_gejalaKulit='$kdgejala_B' ");
 	while($data_GB=mysqli_fetch_array($query_CG)){ echo "<center>&#8730;</center>";
-	echo "<center><strong><a title='Edit Nilai CF Pada Tiap Gejala' href='edit_cf.php?id_problem=$kdpenyakit_B&id_evidence=$kdgejala_B&cf=$data_GB[cf]'>cf=$data_GB[cf]</a></strong></center>"; }
+	echo "<center><strong><a title='Edit Nilai belief Pada Tiap Gejala' href='edit_belief.php?id_penyakitKulit=$kdpenyakit_B&id_gejalaKulit=$kdgejala_B&belief=$data_GB[belief]'>belief=$data_GB[belief]</a></strong></center>"; }
 	?></td><?php }?>
     </tr>
   <?php } ?>
@@ -233,6 +256,8 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       </footer>
     </div>
 
+
+     <!-- Grafik ini menampilkan data acak pada halaman dashboard. -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
