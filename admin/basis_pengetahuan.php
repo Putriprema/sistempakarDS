@@ -24,9 +24,22 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
 body {
         font-family: 'Poppins', sans-serif;
     }
-    </style>  
 
-<body>
+  /* Menambahkan jarak antara tombol dan tabel */
+  form {
+    margin-top: 20px; /* Menambahkan jarak di atas form */
+  }
+
+  .button-container {
+    margin-top: 20px; /* Jarak antara tabel dan tombol Reset serta Set Rule */
+  }
+
+  table {
+    margin-bottom: 20px; /* Menambahkan jarak di bawah tabel */
+  }
+
+</style>
+
   <div class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
         <div class="logo"><h1>Dashboard - Admin Pakar Diagnosa Dini Penyakit Kulit Anjing | Metode Dempster Shafer</h1></div>
