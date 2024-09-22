@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+
+body {
+        font-family: 'Poppins', sans-serif;
+    }
+
         /* Navbar styling */
         .navbar {
             background-color: #1D93B3;
@@ -145,6 +150,20 @@
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
+
+    <script>
+        // Validasi agar hanya angka yang boleh diisi di input no telp pemilik
+        document.getElementById('TxtTelpPemilik').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Validasi agar hanya angka yang boleh diisi di input berat badan anjing
+        document.getElementById('TxtBeratBadanAnjing').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</script>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -248,7 +267,7 @@
 
                 <div class="mb-3">
                     <label for="TxtTelpPemilik" class="form-label">No Telp Pemilik</label>
-                    <input type="text" class="form-control" id="TxtTelpPemilik" name="TxtTelpPemilik" maxlength="60" placeholder="Masukkan No Telp Anda" autocomplete="off">
+                    <input type="tel" class="form-control" id="TxtTelpPemilik" name="TxtTelpPemilik" maxlength="15" placeholder="Masukkan No Telp Anda" autocomplete="off" pattern="[0-9]+" title="Masukkan hanya angka">
                 </div>
 
                 <div class="mb-3">
@@ -307,8 +326,8 @@
                 <div class="mb-3">
                     <label for="TxtBeratBadanAnjing" class="form-label">Berat Badan Anjing</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="TxtBeratBadanAnjing" name="TxtBeratBadanAnjing" maxlength="60" placeholder="Masukkan Berat badan Anjing Anda" autocomplete="off">
-                        <span class="input-group-text">kg</span>
+                    <input type="number" class="form-control" id="TxtBeratBadanAnjing" name="TxtBeratBadanAnjing" maxlength="60" placeholder="Masukkan Berat badan Anjing Anda" pattern="[0-9]+" autocomplete="off">  
+                    <span class="input-group-text">kg</span>
                     </div>
                 </div>
 
