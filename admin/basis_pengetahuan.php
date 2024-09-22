@@ -20,6 +20,9 @@
 
 body {
         font-family: 'Poppins', sans-serif;
+        display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     }
 
   /* Menambahkan jarak antara tombol dan tabel */

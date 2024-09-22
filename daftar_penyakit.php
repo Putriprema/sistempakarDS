@@ -9,6 +9,10 @@
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+
+body {
+        font-family: 'Poppins', sans-serif;
+    }
         .navbar {
             background-color: #1D93B3;
             margin-bottom: 60px;

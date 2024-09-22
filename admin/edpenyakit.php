@@ -3,12 +3,12 @@ include "koneksi.php";
 $kdubah = $_GET['kdubah'];
 if($kdubah !=""){
 	#menampilkan data
-	$sql = "SELECT * FROM tb_penyakit WHERE id='$kdubah'";
+	$sql = "SELECT * FROM tb_penyakit WHERE id_penyakit='$kdubah'";
 	$qry = mysqli_query ($koneksi,$sql)
 			or die ("SQL ERROR".mysqli_error());
 	$data = mysqli_fetch_array($qry);
 	#samakan dengan variabel form
-	$id=$data['id'];
+	$id=$data['id_penyakit'];
 	$in_id_penyakit = $data['kdpenyakit'];
 	$in_penyakit = $data['nama_penyakit'];
 	$in_definisi = $data['definisi'];
@@ -33,7 +33,7 @@ background-attachment:fixed;
 </style> 
 </head>
 <body>          
-<form id="form1" name="form1" method="post" action="edsimpenyakit.php">
+<form id_penyakit="form1" name="form1" method="post" action="edsimpenyakit.php">
 <table width="509" border="0" align="center">
   <tr>
     <td height="22" colspan="3" valign="top">&nbsp;</td>
@@ -72,7 +72,7 @@ background-attachment:fixed;
     <td>&nbsp;</td>
     <td valign="top">
       <label>
-        <textarea name="in_solusi" id="in_solusi" cols="45" rows="5"><?php echo $in_solusi;?></textarea>
+        <textarea name="in_solusi" id_penyakit="in_solusi" cols="45" rows="5"><?php echo $in_solusi;?></textarea>
         </label>  </td>
   </tr>
   <tr>
@@ -83,8 +83,8 @@ background-attachment:fixed;
   <tr>
     <td valign="top">&nbsp;</td>
     <td>&nbsp;</td>
-    <td valign="top"><input type="submit" name="simpan" id="simpan" value="Update" />
-     <a href="../admin/penyakit.php"><input type="button" name="batal" id="batal" value="Batal" /></a></td>
+    <td valign="top"><input type="submit" name="simpan" id_penyakit="simpan" value="Update" />
+     <a href="../admin/penyakit.php"><input type="button" name="batal" id_penyakit="batal" value="Batal" /></a></td>
       </a></td>
   </tr>
   <tr>
