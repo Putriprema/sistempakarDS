@@ -1,50 +1,35 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>HapusData</title>
-<link href="/image/mimi.JPG" rel='shortcut icon'>
-<style>
-body {
-    background-image: url(/image/background.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-</style>
-</head>
-<body>
-</body>
+
 </html>
 
 <?php
-include "koneksi.php";
+include 'koneksi.php'; // Pastikan koneksi ke database sudah benar
 
-// Memastikan variabel $_GET['kdhapus'] ada sebelum diakses
-if (isset($_GET['kdhapus'])) {
-    $kdhapus = $_GET['kdhapus'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Periksa apakah id_hapus dikirimkan
+    if (isset($_POST['id_hapus'])) {
+        $id_hapus = $_POST['id_hapus'];
 
-    // Debugging untuk memeriksa nilai $kdhapus
-    echo "<center>ID yang akan dihapus: $kdhapus</center><br>";
-    
-    // Mengecek apakah $kdhapus tidak kosong
-    if (!empty($kdhapus)) {
-        // Query untuk menghapus data berdasarkan ID penyakit
-        $sql = "DELETE FROM tb_gejala WHERE kdgejala='$kdhapus'";
-        if (mysqli_query($koneksi, $sql)) {
-            echo "<center><b>Data berhasil dihapus</b></center>";
-            echo "<center><a href='gejala.php'><b>OK</b></a></center>";
+        // Query untuk menghapus data
+        $sql = "DELETE FROM tb_gejala WHERE id = ?";
+        $stmt = $koneksi->prepare($sql);
+        $stmt->bind_param('i', $id_hapus);
+
+        if ($stmt->execute()) {
+            // Jika berhasil, arahkan kembali ke halaman data gejala
+            header("Location: gejala.php?status=sukses");
+            exit;
         } else {
-            // Jika ada kesalahan dalam query SQL, tampilkan error
-            echo "<center>Error: " . mysqli_error($koneksi) . "</center>";
+            // Jika gagal, tampilkan pesan kesalahan
+            echo "Error: " . $stmt->error;
         }
     } else {
-        // Jika ID kosong, tampilkan pesan error
-        echo "<center>Data belum berhasil dihapus karena ID kosong</center>";
-        echo "<center><a href='penyakit.php'><b>Kembali</b></a></center>";
+        echo "ID tidak ditemukan!";
     }
 } else {
-    // Jika parameter kdhapus tidak ditemukan di URL
-    echo "<center>ID penyakit untuk dihapus tidak ditemukan</center>";
-    echo "<center><a href='penyakit.php'><b>Kembali</b></a></center>";
+    echo "Metode permintaan tidak valid!";
 }
 ?>
+

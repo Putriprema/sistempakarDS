@@ -2,20 +2,282 @@
 <head>
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>Gizi Buruk|DempsterShafer</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
-  <link rel="stylesheet" href="css/templatemo_main.css">
-<!-- 
+  <link rel="stylesheet" href="css/styling.css">
+
+</head>
+
+<style>
+
+body {
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    }
+
+  /* Menambahkan jarak antara tombol dan tabel */
+  form {
+    margin-top: 20px; /* Menambahkan jarak di atas form */
+    margin-bottom: 20px;
+  }
+
+  
+
+  table {
+    margin-bottom: 40px; /* Menambahkan jarak di bawah tabel */
+  }
+
+/* 
+
 Dashboard Template 
 http://www.templatemo.com/preview/templatemo_415_dashboard
--->
+
+    1. CSS Imports
+    2. General Styles
+    3. Sidebar
+    4. Charts
+    5. Preferences form
+    6. Sign in form
+    7. tables.html
+    8. Bootstrap overrides
+    9. Maps
+    10. Media Queries
+	
+--------------------------------------- */
+
+/* 1. CSS Imports
+--------------------------------------- */
+@import url('http://fonts.googleapis.com/css?family=Open Sans:300,400,700');
+@import url(font-awesome.min.css);
+@import url(bootstrap.min.css);
+
+/* 2. General Styles
+--------------------------------------- */
+* { font-family: 'Poppins', sans-serif; }
+body { background-color: #1D93B3; }
+h1 { font-size: 30pt; }
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+.logo { display: inline-block; }
+.logo h1 {
+    font-size: 24px;
+    margin: 10px 15px;
+}
+.templatemo-content-wrapper {
+    float: left;
+    width: 100%;
+}
+.templatemo-content {
+    margin-left: 235px;
+    margin-top: 0px;
+    min-height: 600px;
+    padding: 25px 20px 0 20px;
+    background-color: white;
+    overflow-x: hidden;
+}
+.templatemo-footer {
+    clear: both;
+    font-size: 13px;
+    padding: 8px 0 5px 0;
+    text-align: center;
+    color: black;
+    background-color: black;
+}
+.margin-bottom-15 { margin-bottom: 15px; }
+.margin-bottom-30 { margin-bottom: 30px; }
+
+/* 3. Sidebar
+------------------------------------------------------*/
+#templatemo_search_box {
+    width: 150px;
+    display: inline-block;
+}
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.navbar-header { color: #1D93B3; }
+.templatemo-sidebar {
+    padding: 0;
+    margin-top: 20px;
+}
+.templatemo-sidebar .templatemo-sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.templatemo-sidebar .templatemo-sidebar-menu > li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+.templatemo-sidebar .templatemo-sidebar-menu > li > a {
+    display: block;
+    position: relative;
+    margin: 0;
+    border: 0px;
+    padding: 20px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;    
+}
+.templatemo-sidebar-menu a { color: black; }
+.templatemo-sidebar-menu a:hover { text-decoration: none; }
+.templatemo-sidebar-menu li.sub .templatemo-submenu { display: none; }
+.templatemo-sidebar-menu li.sub.open .templatemo-submenu { display: block; }
+.templatemo-submenu { padding-left: 0; }
+.templatemo-submenu li {
+    list-style: none;
+    background-color: #A6D0DD;
+}
+.templatemo-submenu li a {
+    display: block;
+    padding: 20px 15px;
+    margin: 0;
+}
+.templatemo-sidebar-menu > li.sub.open > a {
+    background-color: #1D93B3;
+}
+.templatemo-sidebar .templatemo-sidebar-menu >li.active, .templatemo-sidebar .templatemo-sidebar-menu>li>a:hover {
+    background-color:  #1CC5DC;
+}
+.templatemo-submenu li > a:hover {
+    background-color:  #1CC5DC;
+}
+.templatemo-sidebar .templatemo-sidebar-menu > li > a > i {
+    font-size: 16px;
+    top: 2px;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 4px;
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+}
+
+/* 4. Charts 
+--------------------------------------------*/
+.templatemo-chart-box {
+    display: inline-block;
+    text-align: center;
+    padding: 20px 30px 30px 0;
+}
+
+/* 5. Preferences Form
+------------------------------------------*/
+#templatemo-preferences-form {
+    max-width: 960px;
+    margin-bottom: 30px;
+}
+
+/* 6. Sign in Form 
+--------------------------------------------*/
+.templatemo-signin-form {
+    padding-top: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* 7. tables.html
+------------------------------------------*/
+#templatemo_sort_btn { margin-bottom: 20px; }
+
+/* 8. Bootstrap overrides
+----------------------------------------------*/
+.nav-pills>li>a, .nav-tabs>li>a, .alert, .progress, .panel, .btn, .panel-group .panel, .form-control, .modal-content, .breadcrumb {
+    border-radius: 0;
+}
+.list-group-item:first-child, .panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-control-feedback { right: 15px; }
+
+/* 9. Maps
+------------------------------------------------------*/
+.jqvmap-zoomin, .jqvmap-zoomout {
+    width: 15px;
+    height: 15px;
+}
+.vmap { height: 400px; }
+
+/* 10. Media Queries
+------------------------------------------------------*/
+@media screen and (min-width: 992px) {
+    .templatemo-sidebar {
+        width: 235px;
+        float: left;
+        position: relative;
+        margin-right: -100%;
+    }
+}
+@media screen and (max-width: 991px) {
+    .navbar-form {
+        padding: 0;
+        margin-left: 0;
+    }
+    .navbar-header { float: none; }
+    .navbar-toggle { display: block; }
+    .templatemo-sidebar {
+        border-top: 0 !important;
+        margin: 20px;
+    }
+    .templatemo-sidebar.navbar-collapse.collapse {
+        display: none !important;
+    }
+    .templatemo-sidebar.navbar-collapse.in {
+        border-top: 0 !important;
+        margin: 20px;
+        position: relative;
+        overflow: hidden !important;
+        overflow-y: auto !important;
+        display: block !important;
+    }
+    .templatemo-content-wrapper { float: none; }
+    .templatemo-content { margin: 0; }
+}
+@media screen and (max-width: 767px) {
+    .templatemo-chart-box {
+        padding-right: 0;
+    }
+}
+
+.badge {
+  background-color: #DD0A35; /* Mengatur warna latar belakang menjadi merah */
+  color: white; /* Mengatur warna teks menjadi putih */
+  font-weight: bold; /* Membuat teks tebal */
+}
+
+
+
+
+    </style>  
 </head>
 <body>
-  <div class="navbar navbar-inverse" role="navigation">
+<div class="navbar navbar-inverse" role="navigation" style="background-color: #1D93B3; border: none;">
       <div class="navbar-header">
-        <div class="logo"><h1>Dashboard - Admin Pakar Gangguan Gizi Buruk | Metode Dempster Shafe</h1></div>
+        <div class="logo"><h1  style="color: black; ">Dashboard - Admin Pakar Diagnosa Dini Penyakit Kulit Anjing | Metode Dempster Shafer</h1></div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -24,6 +286,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
         </button> 
       </div>   
     </div>
+
     <div class="template-page-wrapper">
       <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
@@ -61,10 +324,10 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
           <ol class="breadcrumb">
-            <li><a href="index.php">Admin Panel</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Laporan</a></li>
-            <li class="active">Laporan User</li>
+            <li><a href="index.php" style="color: black; font-size: 12pt;">Admin Panel</a></li>
+            <li><a href="#"style="color: black; font-size: 12pt;">Dashboard</a></li>
+            <li><a href="#" style="color: black; font-size: 12pt;">Laporan</a></li>
+            <li class="active" style="color: black; font-size: 12pt; font-weight: bold;">Laporan User</li>
           </ol>
           <h1>Laporan Data Pengguna</h1>
           <!-- Trigger the modal with a button -->
@@ -109,55 +372,82 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
                    <div class="row">
             <div class="col-md-12">
               
-              <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama</th>
-                      <th>Kelamin</th>
-                      <th>Umur</th>
-                      <th>Alamat</th>
-                      <th>Penyakit yang di alami</th>
-                      <th>Tanggal Diagnosa</th>
-                      <th>Delete<input type="hidden" id="texthapus"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-	include "koneksi.php";
-	$arrPenyakit=array();
-	$queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_fetch_array($queryP)){ $arrPenyakit["$dataP[kdpenyakit]"]=$dataP['nama_penyakit']; }	
-	$sql = "SELECT * FROM tbpasien,tb_hasil WHERE tb_hasil.idpasien=tbpasien.idpasien group by tb_hasil.idpasien  ORDER BY tb_hasil.idhasil DESC";
-	$qry = mysqli_query($koneksi,$sql)  or die ("SQL Error".mysqli_error());
-	$no=0;
-	while ($data=mysqli_fetch_array($qry)) {
-	$no++;
-   ?>
-                    <tr>
-                      <td><?php echo $no;?></td>
-                      <td><?php echo $data['nama'];?></td>
-                      <td><?php echo $data['kelamin'];?></td>
-                      <td><?php echo $data['umur'];?></td>
-                      <td><?php echo $data['alamat']."<br>".$data['namaorangtua'];?></td>
-                      <td><?php $idp=$data['idpasien'];
-	$strP=mysqli_query($koneksi,"SELECT * FROM tb_hasil WHERE idpasien='$idp' ");
-	while($dataP=mysqli_fetch_array($strP)){
-		echo $dataP['kdpenyakit']." | "; print_r($arrPenyakit["$dataP[kdpenyakit]"]); echo " = ".$dataP['persentase']."%<br>";
-		}
-	 ?></td>
-     				  <td><?php echo $data['tanggal'];?></td>                    
-                      <td><a onClick="return HapusData('<?php echo $data['idpasien'];?>');" data-toggle="modal" data-target="#confirmModal2" class="btn btn-link">Delete</a>
-                        <?php
-                        include "koneksi.php";
-                        $queryNP=mysqli_query($koneksi,"DELETE FROM tb_hasil WHERE idpasien='$idp'");
-                        ?>
+            <div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama Pemilik</th>
+        <th>Nama Anjing</th>
+        <th>Jenis Kelamin Anjing</th>
+        <th>Umur Anjing</th>
+        <th>Jenis Anjing</th>
+        <th>Penyakit yang Dialami</th>
+        <th>Tanggal/Waktu Diagnosa</th>
+        <th>Delete<input type="hidden" id="texthapus"></th>
+      </tr>
+    </thead><tbody>
+<?php
+include "koneksi.php";
+$arrPenyakit = array();
+// Ambil data penyakit dari tabel tb_penyakit
+$queryP = mysqli_query($koneksi, "SELECT * FROM tb_penyakit");
+while ($dataP = mysqli_fetch_array($queryP)) {
+    $arrPenyakit["$dataP[kdpenyakit]"] = $dataP['nama_penyakit'];
+}
 
-                      </td>
-                    </tr><?php }?>                    
-                  </tbody>
-                </table>
-              </div>
+// Ambil data pasien dan hasil diagnosa
+$sql = "SELECT tbpasien.*, tb_hasil.* 
+        FROM tbpasien 
+        JOIN tb_hasil ON tb_hasil.idpasien = tbpasien.idpasien 
+        ORDER BY tb_hasil.idhasil DESC";
+$qry = mysqli_query($koneksi, $sql) or die("SQL Error: " . mysqli_error($koneksi));
+$no = 0;
+$idpasienDitampilkan = array(); // Array untuk melacak pasien yang sudah ditampilkan
+
+while ($data = mysqli_fetch_array($qry)) {
+    $idpasien = $data['idpasien'];
+    // Cek apakah idpasien sudah pernah ditampilkan
+    if (!in_array($idpasien, $idpasienDitampilkan)) {
+        $no++;
+        // Tampilkan baris pasien
+        ?>
+        <tr>
+            <td><?php echo $no; ?></td>
+            <td><?php echo $data['nama_pemilik']; ?></td>
+            <td><?php echo $data['nama_anjing']; ?></td>
+            <td><?php echo $data['jenis_kelamin_anjing']; ?></td>
+            <td><?php echo $data['umur_anjing']; ?></td>
+            <td><?php echo $data['jenis_anjing']; ?></td>
+            <td>
+                <?php
+                // Ambil data hasil diagnosa untuk pasien ini
+                $strP = mysqli_query($koneksi, "SELECT * FROM tb_hasil WHERE idpasien='$idpasien'");
+                while ($dataP = mysqli_fetch_array($strP)) {
+                    echo $dataP['kdpenyakit'] . " | ";
+                    echo $arrPenyakit["$dataP[kdpenyakit]"];
+                    echo " = " . $dataP['persentase'] . "%<br>";
+                }
+                ?>
+            </td>
+            <td><?php echo $data['tanggal']; ?></td>
+            <td>
+                <!-- Form untuk menghapus data -->
+                <form method="post" action="hapus_pasien.php">
+                    <input type="hidden" name="idpasien" value="<?php echo $data['idpasien']; ?>">
+                    <button type="submit" class="btn btn-danger" style="border-radius: 5px;">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <?php
+        // Tambahkan idpasien ke dalam array $idpasienDitampilkan agar tidak ditampilkan lagi
+        $idpasienDitampilkan[] = $idpasien;
+    }
+}
+?>                    
+</tbody>
+
+</div>
               
                 
             </div>
@@ -204,86 +494,18 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
           </div>
         </div>
       </div>
-      <footer class="templatemo-footer">
-        <div class="templatemo-copyright">
-          <p>Copyright &copy; 2020 | Pakar Gangguan Gizi Buruk (Dempster Shafer)</p>
+     
+        
+        <!-- footer 
+     <footer class="bg-primary text-white text-center py-4" style="background-color: #1D93B3; height: 100px;">
+        <div class="container">
+            <p>&copy; 2024 Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing Dengan Metode Dempster Shafer</p>
+            <p>Developed by Putri Prema Paramitha | putriprema14@gmail.com</p>
         </div>
-      </footer>
+    </footer>
     </div>
+ -->
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <script src="js/templatemo_script.js"></script>
-    <script type="text/javascript">
-			function HapusData(xidhapus){
-		var idhapus=xidhapus; $("#texthapus").val(idhapus);
-		}
-	function DropData(){
-	var data_hapus=$("#texthapus").val();
-	var aksi="hasil";
-	var datanya="&data_hapus="+data_hapus+"&aksi="+aksi;		//hapus data
-		$.ajax({
-			url: "hapus.php",
-			data : datanya,
-			cache : false,
-			success : function (msg){
-				if(msg=="sukses"){
-					$("#frmSukses").show();
-					$("#frmSukses").fadeOut(3200);
-					window.location.reload();
-					 }
-				}
-			})
-		}
-    // Line chart
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["January","February","March","April","May","June","July"],
-      datasets : [
-      {
-        label: "My First dataset",
-        fillColor : "rgba(220,220,220,0.2)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      },
-      {
-        label: "My Second dataset",
-        fillColor : "rgba(151,187,205,0.2)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(151,187,205,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      }
-      ]
-
-    }
-
-    window.onload = function(){
-      var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
-      window.myLine = new Chart(ctx_line).Line(lineChartData, {
-        responsive: true
-      });
-    };
-
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('#loading-example-btn').click(function () {
-      var btn = $(this);
-      btn.button('loading');
-      // $.ajax(...).always(function () {
-      //   btn.button('reset');
-      // });
-  });
-  </script>
+</script>
 </body>
 </html>
