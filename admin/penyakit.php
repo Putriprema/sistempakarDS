@@ -2,15 +2,18 @@
 <head>
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>PakarPadi | DempsterShafer</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
-  <link rel="stylesheet" href="css/templatemo_main.css">
-<!-- 
-Dashboard Template 
-http://www.templatemo.com/preview/templatemo_415_dashboard
--->
+  <link rel="stylesheet" href="css/styling.css">
+
 </head>
 
 <style>
@@ -266,72 +269,6 @@ h1 { font-size: 30pt; }
   font-weight: bold; /* Membuat teks tebal */
 }
 
-/* 2. General Styles */
-* { 
-    font-family: 'Poppins', sans-serif;
-}
-
-body { 
-    background-color: #1D93B3; 
-}
-
-h1 { 
-    font-size: 30pt; 
-}
-
-.btn a {
-    color: white;
-    text-decoration: none;
-}
-
-.logo { 
-    display: inline-block; 
-}
-
-.logo h1 {
-    font-size: 24px;
-    margin: 10px 15px;
-}
-
-.templatemo-content-wrapper {
-    float: left;
-    width: 100%;
-}
-
-.templatemo-content {
-    margin-left: 235px;
-    margin-top: 0px;
-    min-height: 600px;
-    padding: 25px 20px 0 20px;
-    background-color: white;
-    overflow-x: hidden;
-}
-
-/* Font Poppins untuk semua teks dalam tabel */
-table, th, td {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Mengatur tombol Edit berwarna biru */
-.btn-edit {
-    background-color: #007bff; /* Warna biru */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-/* Mengatur tombol Delete berwarna merah */
-.btn-delete {
-    background-color: #dc3545; /* Warna merah */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 30px;
-}
 
 
 </style>
@@ -480,8 +417,9 @@ table, th, td {
     <a href="edpenyakit.php?kdubah=<?php echo $data['id_penyakit'];?>" class="btn btn-primary btn-edit" style="margin-top: 10px;">Edit</a>
                     </td>
                     <td>
-                    <a onClick="return HapusData('<?php echo $data['id_penyakit'];?>');" data-toggle="modal" data-target="#confirmModal2" class="btn btn-danger btn-delete" style="margin-top: 10px;">Delete</a>
-                    </td>
+  <a onClick="return HapusData('<?php echo $data['id_penyakit'];?>');" data-toggle="modal" data-target="#confirmModal2" class="btn btn-danger btn-delete" style="margin-top: 10px;">Delete</a>
+</td>
+
                     </tr><?php }?>                    
                   </tbody>
                 </table>
@@ -514,23 +452,24 @@ table, th, td {
       </div>
       <!-- Modal Hapus Data-->
       <div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Apakah Anda Ingin Hapus Data?</h4>
-              <div id="frmSukses" style="display:none;" class="alert alert-success alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <strong>Success!</strong> Data Berhasil dihapus.
-                    </div>
-            </div>
-            <div class="modal-footer">
-              <a onClick="return DropData();" class="btn btn-primary">Ya</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
-            </div>
-          </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Apakah Anda Ingin Hapus Data?</h4>
+        <div id="frmSukses" style="display:none;" class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <strong>Success!</strong> Data Berhasil dihapus.
         </div>
       </div>
+      <div class="modal-footer">
+        <a onClick="return DropData();" class="btn btn-primary">Ya</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+      </div>
+    </div>
+  </div>
+</div>
+
      
 
          <!-- footer  -->
@@ -548,79 +487,37 @@ table, th, td {
     <script src="js/templatemo_script.js"></script>
     <script src="js/jquery.truncatable.js"></script>
     <script type="text/javascript">
-	function HapusData(xidhapus){
-		var idhapus=xidhapus; $("#texthapus").val(idhapus);
+  function HapusData(xidhapus){
+    var idhapus = xidhapus;
     $("#texthapus").val(idhapus);
-		}
-	function DropData(){
-	var data_hapus=$("#texthapus").val();
-	var aksi="penyakit";
-	var datanya="&data_hapus="+data_hapus+"&aksi="+aksi;		//hapus data
-		$.ajax({
-			url: "hapus.php",
-			data : datanya,
-			cache : false,
-			success : function (msg){
-				if(msg=="sukses"){
-					$("#frmSukses").show();
-					$("#frmSukses").fadeOut(4200);
-					window.location.reload();
-					 }
-				}
-			})
-		}
-		//expande text
-$(function(){
-	 $('.text').truncatable({	limit: 100, more: '[<strong style="color:red;">&raquo;&raquo;&raquo;</strong>]', less: true, hideText: '[<strong>&laquo;&laquo;&laquo;</strong>]' }); 
-	});
-    // Line chart
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["January","February","March","April","May","June","July"],
-      datasets : [
-      {
-        label: "My First dataset",
-        fillColor : "rgba(220,220,220,0.2)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      },
-      {
-        label: "My Second dataset",
-        fillColor : "rgba(151,187,205,0.2)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(151,187,205,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+  }
+
+  function DropData() {
+    var data_hapus = $("#texthapus").val();
+    var aksi = "penyakit";
+    var datanya = "&data_hapus=" + data_hapus + "&aksi=" + aksi;
+
+    // Kirim permintaan untuk menghapus data melalui AJAX
+    $.ajax({
+      url: "hpspenyakit.php",
+      type: "POST",  // Metode POST untuk keamanan
+      data: datanya,
+      cache: false,
+      success: function (response) {
+        if(response == "sukses") {
+          // Tampilkan pesan sukses
+          $("#frmSukses").show();
+          $("#frmSukses").fadeOut(4200);
+          // Muat ulang halaman setelah berhasil menghapus
+          window.location.reload();
+        } else {
+          alert("Gagal menghapus data!");
+        }
       }
-      ]
-
-    }
-
-    window.onload = function(){
-      var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
-      window.myLine = new Chart(ctx_line).Line(lineChartData, {
-        responsive: true
-      });
-    };
-
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
     });
+  }
+</script>
 
-    $('#loading-example-btn').click(function () {
-      var btn = $(this);
-      btn.button('loading');
-      // $.ajax(...).always(function () {
-      //   btn.button('reset');
-      // });
-  });
-  </script>
+
 </body>
 </html>
