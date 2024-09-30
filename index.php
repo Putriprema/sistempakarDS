@@ -10,28 +10,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* edit foto background disini */
+              /* edit foto background disini */
+    .background-container {
+        position: relative; /* Pastikan konten overlay berada di atas background */
+        background-image: url('assets/homepict.png');
+        background-size: cover; /* Membuat gambar memenuhi layar */
+        background-position: center; /* Menjaga posisi gambar di tengah */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+        height: 100vh; /* Memastikan gambar memenuhi seluruh tinggi viewport */
+        min-height: 600px; /* Menetapkan tinggi minimum untuk responsivitas */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* Sesuaikan warna teks agar kontras dengan gambar */
+        flex-direction: column; /* Mengatur layout menjadi kolom */
+        margin-top: 0; /* Hapus jarak atas */
+        padding-top: 0; /* Hapus padding atas */
+    }
+
+    .background-container::before {
+        content: ''; /* Membuat pseudo-element */
+        position: absolute; /* Posisi absolute untuk overlay */
+        top: 0; /* Menutupi seluruh bagian atas */
+        left: 0; /* Menutupi seluruh bagian kiri */
+        width: 100%; /* Lebar 100% dari container */
+        height: 100%; /* Tinggi 100% dari container */
+        background: rgba(0, 0, 0, 0.5); /* Overlay gelap dengan transparansi 0.5 */
+        z-index: 1; /* Pastikan overlay berada di atas background */
+    }
+  
+      /* Tambahkan media query untuk responsivitas lebih lanjut */
+      @media (max-width: 768px) {
         .background-container {
-            position: relative; /* Pastikan konten overlay berada di atas background */
-            background-image: url('assets/homepict.png');
-            background-size: cover; /* Membuat gambar memenuhi layar */
-            background-position: center; /* Menjaga posisi gambar di tengah */
-            background-repeat: no-repeat; /* Menghindari pengulangan gambar */
-            height: 100vh; /* Memastikan gambar memenuhi seluruh tinggi viewport */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white; /* Sesuaikan warna teks agar kontras dengan gambar */
-            flex-direction: column; /* Mengatur layout menjadi kolom */
-            margin-top: 0; /* Hapus jarak atas */
-            padding-top: 0; /* Hapus padding atas */
+            height: auto; /* Atur tinggi otomatis pada layar kecil */
+            min-height: 400px; /* Menetapkan tinggi minimum lebih kecil pada layar kecil */
         }
-        
-        @media (max-width: 768px) {
-            .background-container {
-                background-attachment: fixed; /* Optional: creates a parallax effect */
-            }
+
+        h1, h2, h3, p1, .custom-btn {
+            font-size: 1.8rem; /* Menyesuaikan ukuran font di layar kecil */
+            margin: 10px 0; /* Jarak lebih kecil di layar kecil */
         }
+
+        .custom-btn {
+            width: 10%; /* Lebar tombol lebih responsif */
+            height: auto; /* Tinggi tombol otomatis */
+            font-size: 12pt; /* Ukuran font tombol di layar kecil */
+            padding: 10px; /* Jarak padding yang lebih kecil */
+        }
+    }
 
         .background-container::before {
             content: ''; /* Membuat pseudo-element */
@@ -54,7 +80,7 @@
             color: #000; /* Warna teks default */
             font-weight: 600; /* Menjadikan teks bold */
         }
-
+    
         h3 {
             color: #E4E5E6; /* Warna teks untuk <h3> */
             font-size: 35px; /* Ukuran font */
@@ -216,19 +242,21 @@
             margin-bottom: 150px; /* Jarak bawah paragraf */
         }
     </style>
-
     <script type="text/javascript">
         $(document).ready(function() {
             var namauser;
             var password;
             $("#txtuser").val("");
-            $("#txtpassword").val("");
+            $("#txtpass").val("");
             $("#txtuser").focus();
 
-            // ketika tombol login dikliks
+            // ketika tombol login diklik
             $("#btnlogin").click(function() {
+                // Mendapatkan nilai dari input
                 namauser = $("#txtuser").val();
                 password = $("#txtpass").val();
+
+                // Validasi input
                 if (namauser == '') {
                     alert("Masukkan Username Anda..!");
                     $("#txtuser").focus();
@@ -241,8 +269,7 @@
                 }
 
                 // Cek database ke file cekuser.php
-                $("#status").show();
-                var datanya = "&namauser=" + namauser + "&password=" + password;
+                var datanya = "&namauser=" + encodeURIComponent(namauser) + "&password=" + encodeURIComponent(password);
                 $.ajax({
                     url: "cekuser.php",
                     data: datanya,
@@ -251,19 +278,12 @@
                         if (msg == "usersalah") {
                             $("#lbluser").show();
                             $("#txtuser").focus();
-                            $("#status").hide();
-                            return false;
-                        }
-                        if (msg == "passwordsalah") {
+                        } else if (msg == "passwordsalah") {
                             $("#lbluser").hide();
                             $("#lblpassword").show();
-                            $("#status").hide();
-                        }
-                        if (msg == "sukses") {
-                            $("#lblpassword").hide();
-                            alert("sukses");
-                            $("#status").hide();
-                            $("#form1").submit();
+                        } else if (msg == "sukses") {
+                            // Jika login berhasil, redirect ke index.php
+                            window.location.href = "index.php"; 
                         }
                     }
                 });		
