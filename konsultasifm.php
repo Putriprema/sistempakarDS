@@ -9,88 +9,112 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
-	 /* Menghilangkan bingkai pada navbar */
-	 .navbar {
-            background-color: #1D93B3; /* Warna latar belakang navbar */
-            margin-bottom: 0; /* Menghilangkan margin bawah */
-            border: none; /* Menghilangkan border */
-            box-shadow: none; /* Menghilangkan shadow */
-        }
+body {
+        font-family: 'Poppins', sans-serif;
+    }
 
-        .navbar .navbar-brand, 
-        .navbar .nav > li > a, 
-        .navbar .btn {
-            color: #000; /* Warna teks di navbar menjadi hitam */
-            font-size: 12pt; /* Ukuran font di navbar */
-            line-height: 20px; /* Menjaga agar teks berada di tengah navbar */
-            font-weight: 600; /* Menjadikan teks bold */
-        }
+    .navbar {
+        background-color: #1D93B3; /* Warna latar belakang navbar */
+        margin-bottom: 0; /* Menghilangkan margin bawah */
+        border: none; /* Menghilangkan border */
+        box-shadow: none; /* Menghilangkan shadow */
+		margin-bottom: 50px;
+    }
 
-        .navbar .btn {
-            border-radius: 12px; /* Corner radius button */
-            border: none; /* Menghilangkan border pada tombol */
-            box-shadow: none; /* Menghilangkan shadow pada tombol */
-            background-color: #90B5BE; /* Latar belakang button */
-        }
+    .navbar .navbar-brand, 
+    .navbar .nav > li > a, 
+    .navbar .btn {
+        color: #000; /* Warna teks di navbar */
+        font-size: 12pt; /* Ukuran font di navbar */
+        line-height: 20px; /* Menjaga agar teks berada di tengah navbar */
+        font-weight: 600; /* Menjadikan teks bold */
+    }
 
-        .navbar .navbar-nav > li > a:hover {
-            background-color: #6CBED2; /* Warna hover baru */
-            color: #fff; /* Warna teks saat hover */
-        }
+    .navbar .btn {
+        border-radius: 12px; /* Corner radius button */
+        border: none; /* Menghilangkan border pada tombol */
+        box-shadow: none; /* Menghilangkan shadow pada tombol */
+        background-color: #90B5BE; /* Latar belakang button */
+    }
 
-        .navbar .navbar-nav > .active > a, 
-        .navbar .navbar-nav > .active > a:hover {
-            color: #fff; /* Warna teks item aktif */
-            background-color: transparent; /* Menghapus latar belakang aktif */
-            border: none; /* Menghilangkan border pada item aktif */
-        }
+    .navbar .navbar-nav > li > a:hover {
+        background-color: #6CBED2; /* Warna hover baru */
+        color: #fff; /* Warna teks saat hover */
+    }
 
-		.form {
-            width: 99%;
-            background: linear-gradient(to left, #FFF, #EEE);
-            border: 1px solid #CCC;
-            border-radius: 5px 5px;
-            padding: 3px 3px 3px 5px;
-        }
+    .form { 
+        width: 99%; 
+        background: linear-gradient(to left, #FFF, #EEE); 
+        border: 1px solid #CCC; 
+        border-radius: 5px 5px; 
+        padding: 3px 3px 3px 5px;
+    }
+    .form p { 
+        font-weight: bold; 
+        font-size: 18pt; /* Ukuran font untuk gejala */
+    }
+    p { border: 0px solid #03F; }
 
-        .form p {
-            font-weight: bold;
-            font-size: 12pt;
-        }
+	/* editing table aturan kombinasi */
+    .Y1, .Y2, .X1, .X2, .teta1, .teta2 { 
+        text-align: center; 
+        float: left; 
+        width: 330px; 
+    }
+	/* editing table aturan kombinasi */
+    .Y1 { border: 1px solid #C30; background: #F66; }
+    .Y2 { border: 1px solid #C30; background: #FF9; }
+    .X1 { border: 1px solid #0F0; background: #0C9; }
+    .X2 { border: 1px solid #33C; background: #06F; }
+    .teta1 { border: 1px dashed #C30; background: linear-gradient(to right, #0CF, #39F); }
+    .teta2 { border: 1px dashed #9C0; background: linear-gradient(to right, #0CF, #39F); }
 
-        p {
-            border: 0px solid #03F;
-        }
+	/* editing table aturan kombinasi yang warna kuning */
+    .densitas { 
+        border: 2px solid #CC0; 
+        padding: 3px; 
+        text-align: center; 
+        display: block; 
+        float: left; 
+        width: 330px; 
+    }
 
-        .densitas {
-            border: 2px solid #CC0;
-            padding: 3px 3px 3px 3px;
+    .kolom2X { 
+        border: 1px solid #06C; 
+        margin-top: -100px; 
+    }
+
+	.btn-cetak {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             text-align: center;
-            display: block;
-            float: left;
-            width: 220px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
         }
-
-
-.form { width:99%; background:linear-gradient(to left, #FFF, #EEE); border:1px solid #CCC; border-radius:5px 5px; padding:3px 3px 3px 5px;}
-.form p{ font-weight:bold; font-size:12pt;}
-p { border:0px solid #03F;}
-.Y1 { text-align:center; border:1px  solid #C30; background:#F66; float:left; width:220px; }
-.Y2 { text-align:center; border:1px  solid #C30; background:#FF9; float:left; width:220px;}
-
-.Y1r2 { text-align:center; border:1px  solid #C30; background:#933;  float:left; width:220px; margin-top:-80px;}
-.Y2r2 { text-align:center; border:1px  solid #C30; background:#933;  float:left; width:220px; margin-top:-80px;}
-
-.X1 { text-align:center; border:1px  solid #0F0; background:#0C9; float:left; width:220px;}
-.X2 {  text-align:center; border:1px  solid #33C; background:#06F; float:left; width:220px;}
-
-.teta1 { text-align:center; border:1px dashed #C30;  background:linear-gradient(to right, #0CF, #39F);}
-.teta2 {  text-align:center; border:1px dashed #9C0; background:linear-gradient(to right, #0CF, #39F);}
-
-.X1baris2 { border:1px solid #36F; }
-.densitas { border:2px solid #CC0; padding:3px 3px 3px 3px; text-align:center; display:block; float:left; width:220px;}
-.kolom2X { border:1px solid #06C; margin-top:-100px; }
+        .btn-cetak:hover {
+            background-color: #218838;
+        }
 </style>
+
+<script>
+function resetForm() {
+    // Mengatur ulang semua checkbox
+    $('input[type="checkbox"]').prop('checked', false);
+    
+    // Menghapus pilihan dari form
+    $('form').trigger('reset');
+
+    // Jika ada elemen lain yang ingin direset, tambahkan di sini
+    // Contoh: $('#elementId').val('');
+}
+
+
+</script>
+
+
 </head>
 <body>	
 	 <!-- membuat menu navigasi -->
@@ -173,8 +197,8 @@ p { border:0px solid #03F;}
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-					<button type="button" class="btn btn-primary">Daftar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 20px;">Batal</button>
+					<button type="button" class="btn btn-primary" style="margin-right: 20px;">Daftar</button>
 				</div>
 			</div>
 		</div>
@@ -187,12 +211,13 @@ p { border:0px solid #03F;}
 		<!-- membuat jumbotron -->
 		<div class="jumbotron">
 			<center>			
-				<h2>Proses Diagnosa Dini Penyakit Kulit Anjing</h2>
+				<h2>Proses Diagnosa Penyakit Kulit Pada Anjing</h2>
                 <?php include "admin/koneksi.php"; ?>
 <?php include "admin/koneksi2.php"; ?>
-<table width="750" border="1" align="center" class="table table-striped table-hover table-bordered">
-  <tr>
-    <td width="786" ><center><strong>Pilihlah Gejala Yang Terjadi..!</strong></center></td>
+
+<!-- styling tabel gejala -->
+<table width="750" border="4" align="center" class="table table-striped table-hover table-bordered">
+    <td width="786" style="font-size: 18pt"><center><strong>Pilihlah Gejala Yang Dialami..!</strong></center></td>
   </tr>
   <tr>
     <td style="padding:3px 3px 7px 3px;">
@@ -209,15 +234,18 @@ while($row=$result->fetch_object()){
         ."> {$row->kdgejala} {$row->gejala}<br>";
 }
 ?><br>
-<center><input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-primary">
-<button type="reset" class="btn btn-danger">Reset</button>
+ <center>
+ <div class="d-flex justify-content-between">
+    <input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-success">
+    <button type="button" class="btn btn-warning" onclick="resetForm()">Ulangi</button>
 </center>
 
 </form>
-<p style="font-weight:bold; text-align:center; background:#06F;"><strong>Menentukan Nilai Densitas (m) Awal</strong></p>
+
 
 <?php
 //mengambil nilai gejala yang dipilih
+
 if(isset($_POST['evidence'])){
 	if(count($_POST['evidence'])<2){
 		echo "Pilih minimal 2 gejala";
@@ -229,7 +257,12 @@ if(isset($_POST['evidence'])){
 			$queryG=mysqli_query($koneksi,"SELECT * FROM tb_gejala WHERE id='$kdGSelect' "); 
 			while($dataG=mysqli_fetch_array($queryG)){ echo $dataG['gejala']."<br>";}
 			}
+
 		echo "</div>";
+
+		echo "<p style='font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px;'><strong>Menentukan Nilai Densitas (m) Awal</strong></p>";
+
+
 		$sql = "SELECT GROUP_CONCAT(b.kdpenyakit), a.belief , a.id_gejalaKulit
 			FROM tb_rules a
 			JOIN tb_penyakit b ON a.id_penyakitKulit=b.id_penyakit
@@ -247,6 +280,7 @@ if(isset($_POST['evidence'])){
 		} $no=0;
 		echo "<br>";
 		echo "<div class='form'><p>Densitas (m) Awal<p>";
+		//editing table container bagian pemilihan gejala
 		echo "<table border='1' width='100%' class='table table-striped table-hover table-bordered'> ";
 		echo "<tr><td colspan='5'><center>Tabel 1 Densitas (m) Awal</center</td></tr>";
 		echo "<tr>";
@@ -256,6 +290,7 @@ if(isset($_POST['evidence'])){
 		echo "<td><strong>Densitas</strong></td>";
 		echo "<td><strong>Plausability</strong></td>";
 		echo "</tr>";
+		$no = 0;
 		foreach($evidence as $kdgejala){
 			echo "<tr>"; $no=$no+1;
 			echo "<td>$no</td>";
@@ -271,7 +306,7 @@ if(isset($_POST['evidence'])){
 		echo "</table>";
 		echo "</div>";
 ?>
-<p style="font-weight:bold; text-align:center; background:#06F;"><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
+<p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
 <?php
 		//--- menentukan environement
 		$sql="SELECT GROUP_CONCAT(kdpenyakit) FROM tb_penyakit ";
@@ -279,14 +314,16 @@ if(isset($_POST['evidence'])){
 		$row=$result->fetch_row();
 		$fod=$row[0];
 		//$densitas_baru=array(); echo "<br>";
-echo "<table border='1' width='750'>";
+
+		//styling keseluruhan tabel
+echo "<table border='' width='1000'>";
 //menghitung nilai densitas (m) baru
 while(!empty($evidence)){ 
 echo "<tr><td colspan='3'><center>Tabel 2 :Aturan kombinasi untuk m<sub>3</sub></center</td></tr>";
 echo "<tr>";
 		//nilai pada Y1 baris atas
-		echo "<td width='250'>&nbsp;</td>";
-		echo "<td width='250'>";
+		echo "<td width='500'>&nbsp;</td>";
+		echo "<td width='550'>";
 			$densitas1[0]=array_shift($evidence); 
 			echo "<span class='Y1'>M<sub>2</sub>"; echo "{"; print_r($densitas1[0][0]); echo "}<br>";
 			print_r($densitas1[0][1]); 
@@ -354,7 +391,7 @@ echo "<tr>";
 						if(empty($vw)){
 							echo "<span class='densitas'>kosong";
 							$k="&theta;"; echo " $k<br>";
-							echo $nilaiX1Y1;
+							echo $nilaiX1Y1=0;
 							echo "</span>"; 
 						}else{
 							//echo "<td rowspan='2'>";
@@ -414,7 +451,7 @@ echo "</table>";
 		arsort($densitas_baru);
 		//print_r ($densitas_baru);
 	?>
-    <p style="font-weight:bold; text-align:center; background:#06F;"><strong>Hasil Perangkingan</strong></p>
+    <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Hasil Diagnosis Penyakit Kulit Anjing</strong></p>
 <?php	
 $arrPenyakit=array(); 
 $queryPasien=mysqli_query($koneksi,"SELECT * FROM tbpasien ORDER BY idpasien DESC"); $dataPasien=mysqli_fetch_array($queryPasien);
@@ -471,6 +508,10 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
     <td>&nbsp;</td>
   </tr>
 </table>
+<div class="form-group text-center">
+    <a href="cetak.php" class="btn btn-success btn-cetak">Cetak Hasil</a>
+</div>
+
 			</center>
 		</div>
 		<!-- akhir jumbotron -->
@@ -481,6 +522,8 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 
 		<br><br><br>
         <br><br><br>
+		 <!-- Tombol Cetak -->
+		
 	</div>
 	<br/>
 	
@@ -496,5 +539,15 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
         </div>
     </footer>
 	
+	<script>
+        function resetForm() {
+            // Jika ada form input yang perlu direset, tambahkan logika di sini
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+		
+    </script>
+
 </body>
 </html>
