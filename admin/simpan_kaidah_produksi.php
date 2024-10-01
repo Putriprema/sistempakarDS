@@ -40,7 +40,7 @@ $input = $data;
 	  //menampilkan outputnya
 //echo $text;
 $kd_penyakit=$_POST['TxtKdPenyakit']; 
-$cf=$_POST['cf'];
+$cf=$_POST['belief'];
 //menyimpan data kedalam tabel relasi
 $text_line=$data;
 $text_line =$data; //"Poll number 1, 1500, 250, 150, 100, 1000";
@@ -50,7 +50,7 @@ for ($start=0; $start < count($text_line); $start++) {
 	$baris=$text_line[$start]; //echo "$baris<br>";
 	// untuk nilai bobot	
 	//$bobot=substr($databobot,$posisi,1); echo $bobot. "<br>";
-	$sql="INSERT INTO  tb_rules (id_problem,id_evidence,cf) VALUES ('$kd_penyakit','$baris','$cf' )";
+	$sql="INSERT INTO  tb_rules (id_penyakitKulit,id_gejalaKulit,beleif) VALUES ('$kd_penyakit','$baris','$belief' )";
 	$query=mysqli_query($koneksi,$sql) or die(mysql_error($koneksi));
 	$posisi++;
 //print $text_line[$start] . "<BR>";

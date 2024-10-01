@@ -12,18 +12,17 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
-  <link rel="stylesheet" href="css/templatemo_main.css">
-<!-- 
-Dashboard Template 
-http://www.templatemo.com/preview/templatemo_415_dashboard
--->
+  <link rel="stylesheet" href="css/styling.css">
+
 </head>
+
 <style>
+
 body {
         font-family: 'Poppins', sans-serif;
         display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Agar konten minimal setinggi viewport */
+    min-height: 100vh;
     }
 
   /* Menambahkan jarak antara tombol dan tabel */
@@ -76,21 +75,18 @@ h1 { font-size: 30pt; }
     font-size: 24px;
     margin: 10px 15px;
 }
-
 .templatemo-content-wrapper {
-    flex: 1; /* Konten utama akan mengambil ruang kosong yang tersisa */
-    padding-bottom: 20px; /* Jarak dengan footer */
+    float: left;
+    width: 100%;
 }
-
 .templatemo-content {
     margin-left: 235px;
-    margin-top: 0;
-    padding: 25px 20px;
+    margin-top: 0px;
+    min-height: 600px;
+    padding: 25px 20px 0 20px;
     background-color: white;
-    min-height: calc(100vh - 100px); /* Mengurangi tinggi footer dari viewport */
     overflow-x: hidden;
 }
-
 .templatemo-footer {
     clear: both;
     font-size: 13px;
@@ -272,6 +268,7 @@ h1 { font-size: 30pt; }
   color: white; /* Mengatur warna teks menjadi putih */
   font-weight: bold; /* Membuat teks tebal */
 }
+
 
 
     </style>  

@@ -1,98 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>HapusData</title>
+<link href="/image/mimi.JPG" rel='shortcut icon'>
+<style>
+body {
+    background-image: url(/image/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+</head>
+<body>
+</body>
+</html>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+</html>
+
 <?php
-include "koneksi.php";
-$aksi=$_GET['aksi'];
-$data_hapus=$_GET['data_hapus'];
-// hapus Penyakit
-if ($aksi=="penyakit"){
-	$sql="DELETE FROM tb_penyakit WHERE id_penyakit='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
+include "koneksi.php";  // Koneksi ke database
+
+if (isset($_POST['data_hapus'])) {
+    $id = $_POST['data_hapus'];  // Ambil ID gejala dari request
+
+    // Pastikan ID adalah integer untuk keamanan
+    $id = intval($id);
+
+    // Buat query untuk menghapus gejala berdasarkan ID menggunakan prepared statement
+    $stmt = $koneksi->prepare("DELETE FROM tb_gejala WHERE id = ?");
+    $stmt->bind_param("i", $id);  // "i" berarti parameter adalah integer
+
+    // Eksekusi query
+    if ($stmt->execute()) {
+        echo "sukses";  // Kirim respons sukses jika data berhasil dihapus
+    } else {
+        echo "gagal";  // Kirim respons gagal jika ada masalah
+    }
+
+    // Tutup statement
+    $stmt->close();
 }
-// hapus Gejala
-if ($aksi=="gejala"){
-	$sql="DELETE FROM tb_gejala WHERE id_penyakit='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error());
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus Hasil
-if ($aksi=="hasil"){
-	$sql="DELETE FROM   tb_hasil WHERE idpasien='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus desa
-if ($aksi=="umkm"){
-	$sql="DELETE FROM   tb_umkm WHERE idumkm='$data_hapus'";
-	$sqlHapusLokasi="DELETE FROM tb_lokasi WHERE idumkm='$data_hapus' ";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	$resulHapusLokasi=mysqli_query($koneksi,$sqlHapusLokasi) or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus kelompok
-if ($aksi=="kelompok"){
-	$sql="DELETE FROM tbkelompok WHERE kd_kelompok='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus lokasi
-if ($aksi=="anggota"){
-	$sql="DELETE FROM tb_anggota WHERE idanggota='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus lokasi
-if ($aksi=="kegiatan"){
-	$sql="DELETE FROM tbkegiatan WHERE id_kegiatan='$data_hapus'";
-	$result=mysqli_query($koneksi,$sql)or die (mysqli_error($koneksi));
-	//jika berhasil di hapus
-	if ($result){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
-// hapus lokasi
-if ($aksi=="lokasi"){
-	$id_lokasi=$_GET['data_hapus']; $idumkm=$_GET['idumkm'];
-	$sql="DELETE FROM tb_lokasi WHERE id_lokasi='$id_lokasi'";
-	$sql2="DELETE FROM tb_umkm WHERE idumkm='$idumkm'";
-	$result=mysqli_query($sql)or die (mysqli_error());
-	$result2=mysqli_query($sql2)or die(mysqli_error());
-	//jika berhasil di hapus
-	if ($result2){
-		echo "sukses";
-	}else{
-		echo "gagal";
-	}
-}
+
+// Tutup koneksi
+$koneksi->close();
 ?>
+

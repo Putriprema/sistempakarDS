@@ -152,6 +152,7 @@ body {
     </style>
 
     <script>
+
         // Validasi agar hanya angka yang boleh diisi di input no telp pemilik
         document.getElementById('TxtTelpPemilik').addEventListener('input', function (e) {
             this.value = this.value.replace(/[^0-9]/g, '');

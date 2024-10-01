@@ -330,7 +330,7 @@ h1 { font-size: 30pt; }
           </ol>
           <h1>Data Gejala</h1>
           <!-- Trigger the modal with a button -->
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="border-radius: 5px; margin-bottom: 20px; margin-top: 20px;">
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="border-radius: 5px; margin-bottom: 20px; margin-top: 20px;">
     Tambah Data
 </button>
 
