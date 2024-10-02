@@ -457,7 +457,7 @@ echo "</table>";
 $arrPenyakit=array(); 
 $queryPasien=mysqli_query($koneksi,"SELECT * FROM tbpasien ORDER BY idpasien DESC"); $dataPasien=mysqli_fetch_array($queryPasien);
 $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_fetch_array($queryP)){ $arrPenyakit["$dataP[kdpenyakit]"]=$dataP['nama_penyakit']; }	
-		echo "<p style='font-weight:bold; border:none;'>Dari hasil perhitungan yang terakhir tersebut kemudian diurutkan nilainya dari yang terbesar ke yang terkecil sebagai berikut :</p>";
+		echo "<p style='font-weight:bold; border:none;margin-top: 20px; font-size: 15pt;'>Dari hasil perhitungan yang terakhir tersebut kemudian diurutkan nilainya dari yang terbesar ke yang terkecil sebagai berikut :</p>";
 		//print_r($densitas_baru);echo "<hr>"; 
 		$dataSama=array();
 		$dataSama=array_intersect_key($arrPenyakit,$densitas_baru);
