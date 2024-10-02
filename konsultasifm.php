@@ -306,9 +306,9 @@ if(isset($_POST['evidence'])){
 		echo "</table>";
 		echo "</div>";
 ?>
-<p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
+<!-- <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
 <?php
-		//--- menentukan environement
+		//--- menentukan environement -->
 		$sql="SELECT GROUP_CONCAT(kdpenyakit) FROM tb_penyakit ";
 		$result=$db->query($sql);
 		$row=$result->fetch_row();
@@ -450,8 +450,9 @@ echo "</table>";
 		unset($densitas_baru["&theta;"]);
 		arsort($densitas_baru);
 		//print_r ($densitas_baru);
+		
 	?>
-    <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Hasil Diagnosis Penyakit Kulit Anjing</strong></p>
+    <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Hasil Diagnosis Penyakit Kulit Anjing</strong></p> -->
 <?php	
 $arrPenyakit=array(); 
 $queryPasien=mysqli_query($koneksi,"SELECT * FROM tbpasien ORDER BY idpasien DESC"); $dataPasien=mysqli_fetch_array($queryPasien);
@@ -471,8 +472,8 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 			$strS=mysqli_query($koneksi,"SELECT * FROM tb_penyakit WHERE kdpenyakit='$k' ");
 			$dataS=mysqli_fetch_array($strS); 
 				echo "<strong>m<sub>$m</sub>( $kdpenyakit | "; print_r($arrPenyakit["$kdpenyakit"]); echo ") = "; 
-				echo " dengan nilai kepercayaan sebesar ".round($densitas_baru[$kdpenyakit]*100,2)."%<br></strong>";
-				echo "Solusi Penanganan : <p style='margin: 10px;max-height:300px;overflow:auto; border:3px solid #99ccff; color:#999999; letter-spacing:2px;'>".$dataS['solusi']."</p><hr>";
+				echo " dengan nilai kepercayaan sebesar :  ".round($densitas_baru[$kdpenyakit]*100,2)."%<br></strong>";
+				echo "Solusi Penanganan : <p style='margin-top: 10px; padding-left: 5px; padding-right: 5px; font-size: 12pt; max-height:300px; overflow:auto; border:3px solid #1D93B3; color: #3C3D37; text-align: justify; letter-spacing: 1px;'>".$dataS['solusi']."</p><hr>";
 				$persen=round($densitas_baru[$kdpenyakit]*100,2);
 				//menyimpan data pasien
 				$idPasien=$dataPasien['idpasien'];
@@ -480,10 +481,8 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 			 }
 			}
 		}
-        //--- perangkingan
-        unset($densitas_baru["&theta;"]);
-        arsort($densitas_baru);
-        //print_r($densitas_baru);
+       
+        
         
         //--- menampilkan hasil akhir
         $codes=array_keys($densitas_baru); 
