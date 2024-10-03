@@ -65,6 +65,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
 --------------------------------------- */
 * { font-family: 'Poppins', sans-serif; }
 body { background-color: #1D93B3; }
+
 h1 { font-size: 30pt; }
 .btn a {
     color: white;
@@ -314,10 +315,16 @@ h1 { font-size: 30pt; }
               <li><a href="lapgejala.php">Laporan Gejala</a></li>
               <li><a href="lapuser.php"><span class="badge pull-right"><?php $queryNP3=mysqli_query($koneksi,"SELECT * FROM tbpasien"); $numNP3=mysqli_num_rows($queryNP3); echo $numNP3;?></span>Laporan User</a></li>            
             </ul>
+
+ <!-- halaman logout  -->
+            <a href="#" onclick="return confirmLogout();">
+        <i class="fa fa-sign-out"></i> Logout
+    </a>
           </li>
-          <!--<li><a href="manage_user.php"><i class="fa fa-users"></i><span class="badge pull-right">NEW</span>Manage Users</a></li>-->
-          <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Logout</a></li>
-        </ul>
+          <li>
+   
+</li>
+
       </div><!--/.navbar-collapse -->  
 
       <div class="templatemo-content-wrapper">
@@ -352,22 +359,7 @@ h1 { font-size: 30pt; }
           </div>    
         </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Apakah anda ingin keluar program ?</h4>
-            </div>
-            <div class="modal-footer">
-              <a href="sign-in.php" class="btn btn-primary">Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            </div>
-          </div>
-        </div>
-      </div>
-     
+      
         <!-- footer  -->
      <footer class="bg-primary text-white text-center py-4" style="background-color: #1D93B3; height: 100px;">
         <div class="container">
@@ -381,55 +373,52 @@ h1 { font-size: 30pt; }
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
     <script src="js/templatemo_script.js"></script>
+    <script src="js/jquery.truncatable.js"></script>
     <script type="text/javascript">
-    // Line chart
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["January","February","March","April","May","June","July"],
-      datasets : [
-      {
-        label: "My First dataset",
-        fillColor : "rgba(220,220,220,0.2)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      },
-      {
-        label: "My Second dataset",
-        fillColor : "rgba(151,187,205,0.2)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(151,187,205,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      }
-      ]
+  function HapusData(xidhapus){
+    var idhapus = xidhapus;
+    $("#texthapus").val(idhapus);
+  }
 
+  function DropData() {
+    var data_hapus = $("#texthapus").val();
+    var aksi = "penyakit";
+    var datanya = "&data_hapus=" + data_hapus + "&aksi=" + aksi;
+
+    // Kirim permintaan untuk menghapus data melalui AJAX
+    $.ajax({
+      url: "hpspenyakit.php",
+      type: "POST",  // Metode POST untuk keamanan
+      data: datanya,
+      cache: false,
+      success: function (response) {
+        if(response == "sukses") {
+          // Tampilkan pesan sukses
+          $("#frmSukses").show();
+          $("#frmSukses").fadeOut(4200);
+          // Muat ulang halaman setelah berhasil menghapus
+          window.location.reload();
+        } else {
+          alert("Gagal menghapus data!");
+        }
+      }
+
+      
+    });
+  }
+  function confirmLogout() {
+        // Menampilkan popup konfirmasi
+        var confirmAction = confirm("Apakah Anda yakin ingin keluar dari halaman admin?");
+        
+        // Jika pengguna mengklik "Ya", arahkan ke halaman loginadmin.php
+        if (confirmAction) {
+            window.location.href = "http://localhost/sistempakarDS/halaman_loginadmin.php";
+        }
+        // Jika pengguna mengklik "Tidak", popup akan hilang dan tidak terjadi apa-apa
+        return false;
     }
 
-    window.onload = function(){
-      var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
-      window.myLine = new Chart(ctx_line).Line(lineChartData, {
-        responsive: true
-      });
-    };
-
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('#loading-example-btn').click(function () {
-      var btn = $(this);
-      btn.button('loading');
-      // $.ajax(...).always(function () {
-      //   btn.button('reset');
-      // });
-  });
-  </script>
+</script>
+   
 </body>
 </html>

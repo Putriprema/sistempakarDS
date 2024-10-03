@@ -93,27 +93,68 @@
         }
 
         .custom-btn {
-            background-color: #90B5BE; /* Latar belakang button */
-            color: #fff; /* Warna teks button */
-            padding: 10px 20px; /* Jarak padding dalam button */
-            text-decoration: none; /* Hapus garis bawah */
-            border-radius: 30px; /* Corner radius button */
-            width: 290px; /* Lebar button */
-            height: 70px; /* Tinggi button */
-            font-size: 20px; /* Ukuran font */
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
-            font-weight: 600; /* Menjadikan teks bold */
-            margin-top: 20px; /* Jarak atas button */
-            display: inline-flex; /* Gunakan flex untuk menyelaraskan icon dan teks */
-            align-items: center; /* Vertikal center icon dan teks */
-            justify-content: center; /* Horizontal center icon dan teks */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan button */
-        }
+    background-color: #90B5BE; /* Latar belakang button */
+    color: #fff; /* Warna teks button */
+    padding: 1.5vw 3vw; /* Padding responsif */
+    text-decoration: none; /* Hapus garis bawah */
+    border-radius: 30px; /* Corner radius button */
+    width: 20vw; /* Lebar button responsif berdasarkan viewport */
+    max-width: 290px; /* Lebar maksimal button */
+    height: 7vh; /* Tinggi button responsif berdasarkan viewport */
+    max-height: 70px; /* Tinggi maksimal button */
+    font-size: 2vw; /* Ukuran font responsif berdasarkan viewport */
+    max-font-size: 20px; /* Ukuran maksimal font */
+    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 600; /* Menjadikan teks bold */
+    margin-top: 20px; /* Jarak atas button */
+    display: inline-flex; /* Gunakan flex untuk menyelaraskan icon dan teks */
+    align-items: center; /* Vertikal center icon dan teks */
+    justify-content: center; /* Horizontal center icon dan teks */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan button */
+}
 
-        .custom-btn:hover {
-            background-color: #6CBED2; /* Warna latar belakang saat hover */
-            text-decoration: none; /* Hilangkan garis bawah saat hover */
-        }
+.custom-btn:hover {
+    background-color: #6CBED2; /* Warna latar belakang saat hover */
+    text-decoration: none; /* Hilangkan garis bawah saat hover */
+}
+
+/* Media queries untuk layar besar */
+@media (min-width: 1200px) {
+    .custom-btn {
+        width: 290px;
+        height: 70px;
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+}
+
+/* Media queries untuk tablet */
+@media (max-width: 992px) {
+    .custom-btn {
+        width: 30vw;
+        height: 6vh;
+        font-size: 2.5vw;
+    }
+}
+
+/* Media queries untuk smartphone */
+@media (max-width: 576px) {
+    .custom-btn {
+        width: 40vw;
+        height: 9vh;
+        font-size: 3vw;
+    }
+}
+
+/* Media queries untuk layar sangat kecil */
+@media (max-width: 400px) {
+    .custom-btn {
+        width: 50vw;
+        height: 10vh;
+        font-size: 4vw;
+    }
+}
+
 
         /* Menghilangkan bingkai pada navbar */
         .navbar {
@@ -242,54 +283,7 @@
             margin-bottom: 150px; /* Jarak bawah paragraf */
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var namauser;
-            var password;
-            $("#txtuser").val("");
-            $("#txtpass").val("");
-            $("#txtuser").focus();
-
-            // ketika tombol login diklik
-            $("#btnlogin").click(function() {
-                // Mendapatkan nilai dari input
-                namauser = $("#txtuser").val();
-                password = $("#txtpass").val();
-
-                // Validasi input
-                if (namauser == '') {
-                    alert("Masukkan Username Anda..!");
-                    $("#txtuser").focus();
-                    return false;
-                }
-                if (password == '') {
-                    alert("Masukkan Password Anda..!");
-                    $("#txtpass").focus();
-                    return false;
-                }
-
-                // Cek database ke file cekuser.php
-                var datanya = "&namauser=" + encodeURIComponent(namauser) + "&password=" + encodeURIComponent(password);
-                $.ajax({
-                    url: "cekuser.php",
-                    data: datanya,
-                    cache: false,
-                    success: function(msg) {
-                        if (msg == "usersalah") {
-                            $("#lbluser").show();
-                            $("#txtuser").focus();
-                        } else if (msg == "passwordsalah") {
-                            $("#lbluser").hide();
-                            $("#lblpassword").show();
-                        } else if (msg == "sukses") {
-                            // Jika login berhasil, redirect ke index.php
-                            window.location.href = "index.php"; 
-                        }
-                    }
-                });		
-            });
-        });
-    </script>
+  
 </head>
 <body>	
     <!-- membuat menu navigasi -->
@@ -310,52 +304,18 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="pasien_add_fm.php">Proses Diagnosa<span class="sr-only">(current)</span></a></li>
-                    <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
+                    <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
                 </ul>
 				
-                <ul class="nav navbar-nav navbar-right">					
-                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
-                </ul>
+                <ul class="nav navbar-nav navbar-right">					 
+    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="border-radius: 12px; font-size: 11.1pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
+</ul>
+
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>	
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Login Administrator</h4>
-                </div>
-                <div class="modal-body">
-                    <form name="form1" method="post" target="_blank" action="dologin.php">
-                        <div class="form-group">
-                            <label>Username :</label>
-                            <input type="text" class="form-control" id="txtuser">
-                            <div id="lbluser" style="display:none;" class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                Username salah..!
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Password :</label>
-                            <input type="password" class="form-control" id="txtpass">
-                            <div id="lblpassword" style="display:none;" class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                Password salah..!
-                            </div>
-                        </div>						
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     <div class="modal fade" id="modal-daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -386,7 +346,7 @@
             </div>
         </div>
     </div>
-    <!-- akhir modal -->
+ 
 
     <!-- tampilan home utama -->
     <div class="background-container">

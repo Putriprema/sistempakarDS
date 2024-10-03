@@ -97,6 +97,30 @@ body {
         .btn-cetak:hover {
             background-color: #218838;
         }
+		 /* Media Queries for Responsive Design */
+		 @media screen and (max-width: 768px) {
+       
+            table, th, td {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .form p {
+                font-size: 14pt;
+            }
+
+         
+        }
+
+        footer {
+            background-color: #1D93B3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+   
+
 </style>
 
 <script>
@@ -135,43 +159,17 @@ function resetForm() {
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="pasien_add_fm.php">Proses Diagnosa<span class="sr-only">(current)</span></a></li>
-                    <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
+                    <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
                 </ul>
 				
-                <ul class="nav navbar-nav navbar-right">					
-                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
-                </ul>
+				<ul class="nav navbar-nav navbar-right">					 
+    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="border-radius: 12px; font-size: 11pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
+</ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>	
 
-	<!-- Modal -->
-	<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Modal Login</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="text" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Password</label>
-							<input type="password" class="form-control">
-						</div>						
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-					<button type="button" class="btn btn-primary">Login</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 	<div class="modal fade" id="modal-daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -217,11 +215,12 @@ function resetForm() {
 
 <!-- styling tabel gejala -->
 <table width="750" border="4" align="center" class="table table-striped table-hover table-bordered">
-    <td width="786" style="font-size: 18pt"><center><strong>Pilihlah Gejala Yang Dialami..!</strong></center></td>
+    <td width="786" style="font-size: 13pt"><center><strong>Silakan pilih gejala sesuai dengan kondisi yang dialami oleh anjing Anda!</strong></center></td>
   </tr>
   <tr>
     <td style="padding:3px 3px 7px 3px;">
 <form method="post" >
+
 <?php
 //-- menampilkan daftar gejala
 //$arrKDGejala=array();
@@ -236,19 +235,21 @@ while($row=$result->fetch_object()){
 ?><br>
  <center>
  <div class="d-flex justify-content-between">
-    <input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-success">
-    <button type="button" class="btn btn-warning" onclick="resetForm()">Ulangi</button>
+    <input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-success" style="margin-bottom: 15px;">
+    <button type="button" class="btn btn-warning" style="margin-bottom: 15px;" onclick="resetForm()">Ulangi</button>
+</div>
 </center>
 
 </form>
 
 
+<!-- /*metode perhitungan DS mulai dari sini*/ -->
 <?php
 //mengambil nilai gejala yang dipilih
 
 if(isset($_POST['evidence'])){
 	if(count($_POST['evidence'])<2){
-		echo "Pilih minimal 2 gejala";
+		echo "<span style='color:red; font-size:14pt; font-weight:bold; display:block;'>Pilih minimal 2 gejala!</span>";
 	}else{
 		echo "<div class='form'><p>Gejala Yang dipilih :</p>"; 
 		$arrKDGejalaSelect=$_POST['evidence'];
@@ -453,6 +454,9 @@ echo "</table>";
 		
 	?>
     <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Hasil Diagnosis Penyakit Kulit Anjing</strong></p> -->
+
+
+
 <?php	
 $arrPenyakit=array(); 
 $queryPasien=mysqli_query($koneksi,"SELECT * FROM tbpasien ORDER BY idpasien DESC"); $dataPasien=mysqli_fetch_array($queryPasien);

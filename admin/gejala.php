@@ -316,8 +316,11 @@ h1 { font-size: 30pt; }
             </ul>
           </li>
           <!--<li><a href="manage_user.php"><i class="fa fa-users"></i><span class="badge pull-right">NEW</span>Manage Users</a></li>-->
-          <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Logout</a></li>
-        </ul>
+          <!-- halaman logout  -->
+         <a href="#" onclick="return confirmLogout();">
+        <i class="fa fa-sign-out" style="margin-left: 20px; margin-top: 20px; font-size: 12pt;"></i> Logout
+    </a>
+
       </div><!--/.navbar-collapse -->
 
       <div class="templatemo-content-wrapper">
@@ -484,6 +487,17 @@ function DropData(){
         }
     });
 }
+function confirmLogout() {
+        // Menampilkan popup konfirmasi
+        var confirmAction = confirm("Apakah Anda yakin ingin keluar dari halaman admin?");
+        
+        // Jika pengguna mengklik "Ya", arahkan ke halaman loginadmin.php
+        if (confirmAction) {
+            window.location.href = "http://localhost/sistempakarDS/halaman_loginadmin.php";
+        }
+        // Jika pengguna mengklik "Tidak", popup akan hilang dan tidak terjadi apa-apa
+        return false;
+    }
 
   </script>
 

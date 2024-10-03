@@ -90,6 +90,18 @@ body {
 			text-align: justify; 
 			margin-right: 10px;
 		}
+
+         /* Media Queries for smaller screens */
+         @media screen and (max-width: 768px) {
+            .table td {
+                font-size: 14pt; /* Adjust font size for smaller screens */
+            }
+
+            .img-thumbnail {
+                max-width: 100%;
+                height: auto; /* Ensure image scales proportionally */
+            }
+        }
     </style>
 </head>
 <body>  
@@ -110,43 +122,17 @@ body {
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="pasien_add_fm.php">Proses Diagnosa</a></li>
-                    <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
+                    <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
-                </ul>
+   <ul class="nav navbar-nav navbar-right">					 
+    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="border-radius: 12px; font-size: 11.1pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
+</ul>
             </div>
         </div>
     </nav>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control">
-                        </div>                      
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Container -->
     <div class="container">            

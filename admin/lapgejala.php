@@ -314,9 +314,13 @@ h1 { font-size: 30pt; }
               <li><a href="lapuser.php"><span class="badge pull-right"><?php $queryNP3=mysqli_query($koneksi,"SELECT * FROM tbpasien"); $numNP3=mysqli_num_rows($queryNP3); echo $numNP3;?></span>Laporan User</a></li>            
             </ul>
           </li>
-          <li><a href="manage_user.php"><i class="fa fa-users"></i><span class="badge pull-right">NEW</span>Manage Users</a></li>
-          <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Logout</a></li>
-        </ul>
+      
+        
+         <!-- halaman logout  -->
+         <a href="#" onclick="return confirmLogout();">
+        <i class="fa fa-sign-out" style="margin-left: 20px; margin-top: 20px; font-size: 12pt;"></i> Logout
+    </a>
+      </ul>
       </div><!--/.navbar-collapse -->
 
       <div class="templatemo-content-wrapper">
@@ -475,59 +479,30 @@ h1 { font-size: 30pt; }
     </footer>
     </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <script src="js/templatemo_script.js"></script>
-    <script type="text/javascript">
-    // Line chart
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-      labels : ["January","February","March","April","May","June","July"],
-      datasets : [
-      {
-        label: "My First dataset",
-        fillColor : "rgba(220,220,220,0.2)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(220,220,220,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      },
-      {
-        label: "My Second dataset",
-        fillColor : "rgba(151,187,205,0.2)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        pointHighlightFill : "#fff",
-        pointHighlightStroke : "rgba(151,187,205,1)",
-        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      }
-      ]
-
+    <script>
+    function confirmLogout() {
+        // Menampilkan popup konfirmasi
+        var confirmAction = confirm("Apakah Anda yakin ingin keluar dari halaman admin?");
+        
+        // Jika pengguna mengklik "Ya", arahkan ke halaman loginadmin.php
+        if (confirmAction) {
+            window.location.href = "http://localhost/sistempakarDS/halaman_loginadmin.php";
+        }
+        // Jika pengguna mengklik "Tidak", popup akan hilang dan tidak terjadi apa-apa
+        return false;
+    }
+    function confirmLogout() {
+        // Menampilkan popup konfirmasi
+        var confirmAction = confirm("Apakah Anda yakin ingin keluar dari halaman admin?");
+        
+        // Jika pengguna mengklik "Ya", arahkan ke halaman loginadmin.php
+        if (confirmAction) {
+            window.location.href = "http://localhost/sistempakarDS/halaman_loginadmin.php";
+        }
+        // Jika pengguna mengklik "Tidak", popup akan hilang dan tidak terjadi apa-apa
+        return false;
     }
 
-    window.onload = function(){
-      var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
-      window.myLine = new Chart(ctx_line).Line(lineChartData, {
-        responsive: true
-      });
-    };
-
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('#loading-example-btn').click(function () {
-      var btn = $(this);
-      btn.button('loading');
-      // $.ajax(...).always(function () {
-      //   btn.button('reset');
-      // });
-  });
-  </script>
+</script>
 </body>
 </html>

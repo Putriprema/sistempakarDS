@@ -1,10 +1,10 @@
 <?php
 include "koneksi.php";
 //--- deklarasi variabel ---
-$namauser=$_GET['namauser'];
+$namauser=$_GET['username'];
 $password=$_GET['password'];
 //-------------------------
-$sql = "SELECT * FROM login WHERE username='$namauser'";
+$sql = "SELECT * FROM login WHERE username='$username'";
 $result=mysqli_query($koneksi,$sql);
 $baris=mysqli_fetch_array($result);
 	//-- cek keadaan namauser
