@@ -1,176 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <style type="text/css">
+.form { width:99%; background:linear-gradient(to left, #FFF, #EEE); border:1px solid #CCC; border-radius:5px 5px; padding:3px 3px 3px 5px;}
+.form p{ font-weight:bold; font-size:12pt;}
+p { border:0px solid #03F;}
+.Y1 { text-align:center; border:1px  solid #C30; background:#F66; float:left; width:220px; }
+.Y2 { text-align:center; border:1px  solid #C30; background:#FF9; float:left; width:220px;}
 
-body {
-        font-family: 'Poppins', sans-serif;
-    }
+.Y1r2 { text-align:center; border:1px  solid #C30; background:#933;  float:left; width:220px; margin-top:-80px;}
+.Y2r2 { text-align:center; border:1px  solid #C30; background:#933;  float:left; width:220px; margin-top:-80px;}
 
-    .navbar {
-        background-color: #1D93B3; /* Warna latar belakang navbar */
-        margin-bottom: 0; /* Menghilangkan margin bawah */
-        border: none; /* Menghilangkan border */
-        box-shadow: none; /* Menghilangkan shadow */
-		margin-bottom: 50px;
-    }
+.X1 { text-align:center; border:1px  solid #0F0; background:#0C9; float:left; width:220px;}
+.X2 {  text-align:center; border:1px  solid #33C; background:#06F; float:left; width:220px;}
 
-    .navbar .navbar-brand, 
-    .navbar .nav > li > a, 
-    .navbar .btn {
-        color: #000; /* Warna teks di navbar */
-        font-size: 12pt; /* Ukuran font di navbar */
-        line-height: 20px; /* Menjaga agar teks berada di tengah navbar */
-        font-weight: 600; /* Menjadikan teks bold */
-    }
+.teta1 { text-align:center; border:1px dashed #C30;  background:linear-gradient(to right, #0CF, #39F);}
+.teta2 {  text-align:center; border:1px dashed #9C0; background:linear-gradient(to right, #0CF, #39F);}
 
-    .navbar .btn {
-        border-radius: 12px; /* Corner radius button */
-        border: none; /* Menghilangkan border pada tombol */
-        box-shadow: none; /* Menghilangkan shadow pada tombol */
-        background-color: #90B5BE; /* Latar belakang button */
-    }
-
-    .navbar .navbar-nav > li > a:hover {
-        background-color: #6CBED2; /* Warna hover baru */
-        color: #fff; /* Warna teks saat hover */
-    }
-
-    .form { 
-        width: 99%; 
-        background: linear-gradient(to left, #FFF, #EEE); 
-        border: 1px solid #CCC; 
-        border-radius: 5px 5px; 
-        padding: 3px 3px 3px 5px;
-    }
-    .form p { 
-        font-weight: bold; 
-        font-size: 18pt; /* Ukuran font untuk gejala */
-    }
-    p { border: 0px solid #03F; }
-
-	/* editing table aturan kombinasi */
-    .Y1, .Y2, .X1, .X2, .teta1, .teta2 { 
-        text-align: center; 
-        float: left; 
-        width: 330px; 
-    }
-	/* editing table aturan kombinasi */
-    .Y1 { border: 1px solid #C30; background: #F66; }
-    .Y2 { border: 1px solid #C30; background: #FF9; }
-    .X1 { border: 1px solid #0F0; background: #0C9; }
-    .X2 { border: 1px solid #33C; background: #06F; }
-    .teta1 { border: 1px dashed #C30; background: linear-gradient(to right, #0CF, #39F); }
-    .teta2 { border: 1px dashed #9C0; background: linear-gradient(to right, #0CF, #39F); }
-
-	/* editing table aturan kombinasi yang warna kuning */
-    .densitas { 
-        border: 2px solid #CC0; 
-        padding: 3px; 
-        text-align: center; 
-        display: block; 
-        float: left; 
-        width: 330px; 
-    }
-
-    .kolom2X { 
-        border: 1px solid #06C; 
-        margin-top: -100px; 
-    }
-
-	.btn-cetak {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn-cetak:hover {
-            background-color: #218838;
-        }
-		 /* Media Queries for Responsive Design */
-		 @media screen and (max-width: 768px) {
-       
-            table, th, td {
-                font-size: 12px;
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .form p {
-                font-size: 14pt;
-            }
-
-         
-        }
-
-        footer {
-            background-color: #1D93B3;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-   
-
+.X1baris2 { border:1px solid #36F; }
+.densitas { border:2px solid #CC0; padding:3px 3px 3px 3px; text-align:center; display:block; float:left; width:220px;}
+.kolom2X { border:1px solid #06C; margin-top:-100px; }
 </style>
-
-<script>
-function resetForm() {
-    // Mengatur ulang semua checkbox
-    $('input[type="checkbox"]').prop('checked', false);
-    
-    // Menghapus pilihan dari form
-    $('form').trigger('reset');
-
-    // Jika ada elemen lain yang ingin direset, tambahkan di sini
-    // Contoh: $('#elementId').val('');
-}
-
-
-</script>
-
-
 </head>
 <body>	
-	 <!-- membuat menu navigasi -->
-	 <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php"><?php include("header.php"); ?></a>
-            </div>
+	<!-- membuat menu navigasi -->
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.php"><?php include("_header.php");?></a>
+			</div>
 			
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="pasien_add_fm.php">Proses Diagnosis<span class="sr-only">(current)</span></a></li>
-                    <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
-                </ul>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="pasien_add_fm.php">Proses Diagnosa <span class="sr-only">(current)</span></a></li>
+					<li><a href="informasi.php">Demo</a></li>
+                    <li><a href="profil.php">Profil</a></li>
+                    <li><a href="daftar_penyakit.php">Daftar Penyakit</a></li>
+				</ul>
 				
-				<ul class="nav navbar-nav navbar-right">					 
-    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="border-radius: 12px; font-size: 11pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
-</ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>	
+				<ul class="nav navbar-nav navbar-right">					
+					<li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal-login">Login Administrator</button></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>	
 
-	
+	<!-- Modal -->
+	<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal Login</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label>Email</label>
+							<input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control">
+						</div>						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+					<button type="button" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="modal fade" id="modal-daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -196,8 +107,8 @@ function resetForm() {
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 20px;">Batal</button>
-					<button type="button" class="btn btn-primary" style="margin-right: 20px;">Daftar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+					<button type="button" class="btn btn-primary">Daftar</button>
 				</div>
 			</div>
 		</div>
@@ -210,17 +121,31 @@ function resetForm() {
 		<!-- membuat jumbotron -->
 		<div class="jumbotron">
 			<center>			
-				<h2>Proses Diagnosis Penyakit Kulit Pada Anjing</h2>
+				<h2>Proses Diagnosa Gangguan Gizi Buruk</h2>
                 <?php include "admin/koneksi.php"; ?>
 <?php include "admin/koneksi2.php"; ?>
-
-<!-- styling tabel gejala -->
-<table width="750" border="4" align="center" class="table table-striped table-hover table-bordered">
-    <td width="786" style="font-size: 13pt"><center><strong>Silakan pilih gejala sesuai dengan kondisi yang dialami oleh anjing Anda!</strong></center></td>
+<table width="750" border="1" align="center" class="table table-striped table-hover table-bordered">
+  <tr>
+    <td width="786" ><center><strong>Pilihlah Gejala Yang Terjadi Alami..!</strong></center></td>
   </tr>
   <tr>
     <td style="padding:3px 3px 7px 3px;">
 <form method="post" >
+<?php
+//-- menampilkan daftar gejala
+//$arrKDGejala=array();
+//$arrKDGejalaSelect=array();
+$sqli="SELECT * FROM tb_gejala ORDER BY id ASC ";
+$result=$db->query($sqli);
+while($row=$result->fetch_object()){
+    echo "<input type='checkbox' name='evidence[]' value='{$row->id}'"
+         .(isset($_POST['evidence'])?(in_array($row->id,$_POST['evidence'])?" checked":""):"")
+        ."> {$row->kdgejala} {$row->gejala}<br>";
+}
+?><br>
+<center><input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-primary"></center><br>
+</form>
+<p style="font-weight:bold; text-align:center; background:#06F;"><strong>Menentukan Nilai Densitas (m) Awal</strong></p>
 
 <?php
 //-- menampilkan daftar gejala
@@ -234,23 +159,15 @@ while($row=$result->fetch_object()){
         ."> {$row->kdgejala} {$row->gejala}<br>";
 }
 ?><br>
- <center>
- <div class="d-flex justify-content-between">
-    <input type="submit" value="Proses Diagnosis Penyakit" class="btn btn-success" style="margin-bottom: 15px;">
-    <button type="button" class="btn btn-warning" style="margin-bottom: 15px;" onclick="resetForm()">Ulangi</button>
-</div>
-</center>
-
+<center><input type="submit" value="Proses Diagnosa Penyakit" class="btn btn-primary"></center><br>
 </form>
+<p style="font-weight:bold; text-align:center; background:#06F;"><strong>Menentukan Nilai Densitas (m) Awal</strong></p>
 
-
-<!-- /*metode perhitungan DS mulai dari sini*/ -->
 <?php
 //mengambil nilai gejala yang dipilih
-
 if(isset($_POST['evidence'])){
 	if(count($_POST['evidence'])<2){
-		echo "<span style='color:red; font-size:14pt; font-weight:bold; display:block;'>Pilih minimal 2 gejala!</span>";
+		echo "Pilih minimal 2 gejala";
 	}else{
 		echo "<div class='form'><p>Gejala Yang dipilih :</p>"; 
 		$arrKDGejalaSelect=$_POST['evidence'];
@@ -259,17 +176,12 @@ if(isset($_POST['evidence'])){
 			$queryG=mysqli_query($koneksi,"SELECT * FROM tb_gejala WHERE id='$kdGSelect' "); 
 			while($dataG=mysqli_fetch_array($queryG)){ echo $dataG['gejala']."<br>";}
 			}
-
 		echo "</div>";
-
-		echo "<p style='font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px;'><strong>Menentukan Nilai Densitas (m) Awal</strong></p>";
-
-
-		$sql = "SELECT GROUP_CONCAT(b.kdpenyakit), a.belief , a.id_gejalaKulit
+		$sql = "SELECT GROUP_CONCAT(b.kdpenyakit), a.cf, a.id_evidence
 			FROM tb_rules a
-			JOIN tb_penyakit b ON a.id_penyakitKulit=b.id_penyakit
-			WHERE a.id_gejalaKulit IN(".implode(',',$_POST['evidence']).") 
-			GROUP BY a.id_gejalaKulit ORDER BY a.id_gejalaKulit ASC ";
+			JOIN tb_penyakit b ON a.id_problem=b.id
+			WHERE a.id_evidence IN(".implode(',',$_POST['evidence']).") 
+			GROUP BY a.id_evidence ORDER BY a.id_evidence ASC ";
 		$result=$db->query($sql);
 		$evidence=array();
 		//$gejalaSelect=array();
@@ -282,17 +194,15 @@ if(isset($_POST['evidence'])){
 		} $no=0;
 		echo "<br>";
 		echo "<div class='form'><p>Densitas (m) Awal<p>";
-		//editing table container bagian pemilihan gejala
 		echo "<table border='1' width='100%' class='table table-striped table-hover table-bordered'> ";
 		echo "<tr><td colspan='5'><center>Tabel 1 Densitas (m) Awal</center</td></tr>";
 		echo "<tr>";
 		echo "<td><strong>No</strong></td>";
 		echo "<td><strong>Gejala</strong></td>";
 		echo "<td><strong>Penyakit</strong></td>";
-		echo "<td><strong>Belief</strong></td>";
+		echo "<td><strong>Densitas</strong></td>";
 		echo "<td><strong>Plausability</strong></td>";
 		echo "</tr>";
-		$no = 0;
 		foreach($evidence as $kdgejala){
 			echo "<tr>"; $no=$no+1;
 			echo "<td>$no</td>";
@@ -308,24 +218,22 @@ if(isset($_POST['evidence'])){
 		echo "</table>";
 		echo "</div>";
 ?>
-<!-- <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
+<p style="font-weight:bold; text-align:center; background:#06F;"><strong>Menentukan Nilai Densitas (m) Baru</strong></p>
 <?php
-		//--- menentukan environement -->
+		//--- menentukan environement
 		$sql="SELECT GROUP_CONCAT(kdpenyakit) FROM tb_penyakit ";
 		$result=$db->query($sql);
 		$row=$result->fetch_row();
 		$fod=$row[0];
 		//$densitas_baru=array(); echo "<br>";
-
-		//styling keseluruhan tabel
-echo "<table border='' width='1000'>";
+echo "<table border='1' width='750'>";
 //menghitung nilai densitas (m) baru
 while(!empty($evidence)){ 
 echo "<tr><td colspan='3'><center>Tabel 2 :Aturan kombinasi untuk m<sub>3</sub></center</td></tr>";
 echo "<tr>";
 		//nilai pada Y1 baris atas
-		echo "<td width='500'>&nbsp;</td>";
-		echo "<td width='550'>";
+		echo "<td width='250'>&nbsp;</td>";
+		echo "<td width='250'>";
 			$densitas1[0]=array_shift($evidence); 
 			echo "<span class='Y1'>M<sub>2</sub>"; echo "{"; print_r($densitas1[0][0]); echo "}<br>";
 			print_r($densitas1[0][1]); 
@@ -393,7 +301,7 @@ echo "<tr>";
 						if(empty($vw)){
 							echo "<span class='densitas'>kosong";
 							$k="&theta;"; echo " $k<br>";
-							echo $nilaiX1Y1=0;
+							echo $nilaiX1Y1;
 							echo "</span>"; 
 						}else{
 							//echo "<td rowspan='2'>";
@@ -452,17 +360,13 @@ echo "</table>";
 		unset($densitas_baru["&theta;"]);
 		arsort($densitas_baru);
 		//print_r ($densitas_baru);
-		
 	?>
-    <p style="font-weight:bold; text-align:center; background:#1D93B3; margin-top: 30px; "><strong>Hasil Diagnosis Penyakit Kulit Anjing</strong></p> -->
-
-
-
+    <p style="font-weight:bold; text-align:center; background:#06F;"><strong>Hasil Perangkingan</strong></p>
 <?php	
 $arrPenyakit=array(); 
 $queryPasien=mysqli_query($koneksi,"SELECT * FROM tbpasien ORDER BY idpasien DESC"); $dataPasien=mysqli_fetch_array($queryPasien);
 $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_fetch_array($queryP)){ $arrPenyakit["$dataP[kdpenyakit]"]=$dataP['nama_penyakit']; }	
-		echo "<p style='font-weight:bold; border:none;margin-top: 20px; font-size: 15pt;'>Dari hasil perhitungan yang terakhir tersebut kemudian diurutkan nilainya dari yang terbesar ke yang terkecil sebagai berikut :</p>";
+		echo "<p style='font-weight:bold; border:none;'>Dari hasil perhitungan yang terakhir tersebut kemudian diurutkan nilainya dari yang terbesar ke yang terkecil sebagai berikut :</p>";
 		//print_r($densitas_baru);echo "<hr>"; 
 		$dataSama=array();
 		$dataSama=array_intersect_key($arrPenyakit,$densitas_baru);
@@ -477,8 +381,8 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 			$strS=mysqli_query($koneksi,"SELECT * FROM tb_penyakit WHERE kdpenyakit='$k' ");
 			$dataS=mysqli_fetch_array($strS); 
 				echo "<strong>m<sub>$m</sub>( $kdpenyakit | "; print_r($arrPenyakit["$kdpenyakit"]); echo ") = "; 
-				echo " dengan nilai kepercayaan sebesar :  ".round($densitas_baru[$kdpenyakit]*100,2)."%<br></strong>";
-				echo "Solusi Penanganan : <p style='margin-top: 10px; padding-left: 5px; padding-right: 5px; font-size: 12pt; max-height:300px; overflow:auto; border:3px solid #1D93B3; color: #3C3D37; text-align: justify; letter-spacing: 1px;'>".$dataS['solusi']."</p><hr>";
+				echo " dengan nilai kepercayaan sebesar ".round($densitas_baru[$kdpenyakit]*100,2)."%<br></strong>";
+				echo "Solusi Penanganan : <p style='margin: 10px;max-height:300px;overflow:auto; border:3px solid #99ccff; color:#999999; letter-spacing:2px;'>".$dataS['solusi']."</p><hr>";
 				$persen=round($densitas_baru[$kdpenyakit]*100,2);
 				//menyimpan data pasien
 				$idPasien=$dataPasien['idpasien'];
@@ -486,8 +390,10 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 			 }
 			}
 		}
-       
-        
+        //--- perangkingan
+        unset($densitas_baru["&theta;"]);
+        arsort($densitas_baru);
+        //print_r($densitas_baru);
         
         //--- menampilkan hasil akhir
         $codes=array_keys($densitas_baru); 
@@ -512,10 +418,6 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
     <td>&nbsp;</td>
   </tr>
 </table>
-<div class="form-group text-center">
-    <a href="cetak.php" class="btn btn-success btn-cetak">Cetak Hasil</a>
-</div>
-
 			</center>
 		</div>
 		<!-- akhir jumbotron -->
@@ -526,32 +428,26 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
 
 		<br><br><br>
         <br><br><br>
-		 <!-- Tombol Cetak -->
-		
 	</div>
 	<br/>
 	
 	
 	<div class="clearfix"></div>
 		
-	 <!-- footer  -->
-	 <footer class="bg-primary text-white text-center py-4" style="background-color: #1D93B3;">
-        <div class="container">
-            <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">
-            <p>&copy; 2024 Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing Dengan Metode Dempster Shafer</p>
-            <p>Developed by Putri Prema Paramitha | putriprema14@gmail.com</p>
-        </div>
-    </footer>
-	
-	<script>
-        function resetForm() {
-            // Jika ada form input yang perlu direset, tambahkan logika di sini
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-        }
-		
-    </script>
+	<nav class="navbar navbar-default" style="bottom: 0;margin: 0">
+		<div class="container">	
+			<center>
+				
+			<ul class="nav navbar-nav">
+				<li><a href="#">Copyright @ 2020 Rose House Squad. All rights reserved.</a></li>				
+			</ul>
 
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Develop by RH Squad</a></li>									
+			</ul>
+			</center>		
+		</div>
+	</nav>
+	
 </body>
 </html>

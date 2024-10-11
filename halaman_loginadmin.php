@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <title>Admin Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
@@ -38,6 +40,29 @@
                 padding: 15px;
             }
         }
+        /* CSS untuk animasi fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Mulai dari tidak terlihat */
+    }
+    to {
+        opacity: 1; /* Berakhir dengan sepenuhnya terlihat */
+    }
+}
+
+/* Terapkan animasi fade-in pada seluruh elemen dalam halaman login */
+body, 
+.login-container, 
+h2, 
+.form-group, 
+.form-control, 
+.input-group, 
+.btn, 
+.text-center {
+    animation: fadeIn 2s ease-out forwards;
+    opacity: 0; /* Set awalnya tidak terlihat */
+}
+
     </style>
     <script type="text/javascript">
         function validateForm() {

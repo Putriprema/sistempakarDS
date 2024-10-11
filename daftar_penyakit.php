@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <title>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
@@ -121,7 +122,7 @@ body {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="pasien_add_fm.php">Proses Diagnosa</a></li>
+                    <li><a href="pasien_add_fm.php">Proses Diagnosis</a></li>
                     <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
                 </ul>
 

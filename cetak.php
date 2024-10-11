@@ -1,3 +1,4 @@
+
 <?php
 include "admin/koneksi.php";
 
@@ -44,7 +45,8 @@ $hasilDiagnosis = !empty($hasilDiagnosa) ? implode("<br>", $hasilDiagnosa) : "Da
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Diagnose Penyakit Kulit Pada Anjing</title>
+    <title>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
@@ -76,7 +78,7 @@ $hasilDiagnosis = !empty($hasilDiagnosa) ? implode("<br>", $hasilDiagnosa) : "Da
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center">Hasil Diagnose Penyakit Kulit Pada Anjing</h2>
+        <h2 class="text-center">Hasil Diagnosis Penyakit Kulit Pada Anjing</h2>
         <hr>
 
         <table class="table table-bordered">

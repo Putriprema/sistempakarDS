@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</title>
+    <title>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</title>
+    <link rel="icon" type="image/png" href="assets/logo.png"> 
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">	
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
@@ -79,18 +80,17 @@
             margin: 25px 0; /* Jarak 10px di atas dan bawah elemen */
             color: #000; /* Warna teks default */
             font-weight: 600; /* Menjadikan teks bold */
+            font-family: 'Poppins', sans-serif;
         }
     
         h3 {
             color: #E4E5E6; /* Warna teks untuk <h3> */
             font-size: 35px; /* Ukuran font */
+            font-family: 'Poppins', sans-serif;
         }
 
-        p1 {
-            color: #1F2020; /* Warna teks untuk <p1> */
-            font-size: 13.5pt; /* Ukuran font */
-            font-style: normal;
-        }
+        
+        
 
         .custom-btn {
     background-color: #90B5BE; /* Latar belakang button */
@@ -260,6 +260,17 @@
             margin-top: 70px;
             margin-bottom: 20px;
         }
+/* Gaya untuk teks intro */
+.intro-text {
+    color: #1F2020; /* Warna teks */
+    font-size: 16pt; /* Ukuran font */
+    font-style: normal; /* Gaya font */
+    font-weight: 550; /* Ketebalan font */
+    margin-top: 20px; /* Margin atas untuk jarak dari elemen sebelumnya */
+    animation: fadeInUp 1.5s ease-out forwards; /* Terapkan animasi */
+    animation-delay: 1.2s; /* Penundaan untuk animasi */
+    font-family: 'Poppins', sans-serif;
+}
 
         /* Styling untuk gambar icon4.png */
         .image-center {
@@ -282,6 +293,40 @@
             margin-top: 30px; /* Jarak atas paragraf */
             margin-bottom: 150px; /* Jarak bawah paragraf */
         }
+     /* CSS untuk animasi awal teks */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Terapkan animasi ke elemen tertentu */
+.background-container,
+.content h1, 
+.content h2, 
+.content h3, 
+.intro-text, 
+.section-title, 
+.centered-paragraph, 
+.icon-description, 
+.section-paragraph, 
+.paragrafDS, 
+.custom-btn, 
+.img-fluid, 
+.image-center {
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* Efek hover untuk paw icon pada tombol */
+.paw-icon {
+    transition: transform 0.6s ease-in-out;
+}
+
     </style>
   
 </head>
@@ -303,7 +348,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="pasien_add_fm.php">Proses Diagnosa<span class="sr-only">(current)</span></a></li>
+                    <li><a href="pasien_add_fm.php">Proses Diagnosis<span class="sr-only">(current)</span></a></li>
                     <li><a href="daftar_penyakit.php">Daftar Penyakit dan Solusi</a></li>
                 </ul>
 				
@@ -353,12 +398,12 @@
         <div class="container">
             <div class="content">
                 <h1>Selamat Datang di</h1>
-                <h2>Sistem Pakar Diagnosa Dini Penyakit Kulit Anjing</h2>
+                <h2>Sistem Pakar Diagnosis Dini Penyakit Kulit Anjing</h2>
                 <h3>Dengan Metode Dempster Shafer</h3>
-                <p1>Temukan solusi cepat dan akurat untuk kesehatan kulit anjing Anda di sini</p1>
+                <p class="intro-text">Temukan solusi cepat dan akurat untuk kesehatan kulit anjing Anda di sini</p>
                 <p>
                     <a class="custom-btn" href="pasien_add_fm.php" role="button">
-                        Mulai Diagnosa    
+                        Mulai Diagnosis    
                         <img class="paw-icon" src="assets/Paw.png" alt="Paw Icon">
                     </a>
                 </p>
@@ -379,7 +424,7 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <img src="assets/icon1.png" alt="Icon Diagnosa Cepat" class="img-fluid" style="max-width: 300px;">
-                <p class="icon-description">Menyediakan diagnosa awal yang cepat dan tepat untuk penyakit kulit pada anjing.</p>
+                <p class="icon-description">Menyediakan Diagnosis awal yang cepat dan tepat untuk penyakit kulit pada anjing.</p>
             </div>
             <div class="col-md-6">
                 <img src="assets/icon2.png" alt="Icon Kesembuhan" class="img-fluid" style="max-width: 300px;">
@@ -403,7 +448,7 @@
 	
     <!-- bagian penjelasan metode DS -->
     <div class="container mt-5">
-        <h5 class="section-title">Tentang Metode Dempster Shafer Pada Sistem Pakar Diagnosa Penyakit Kulit Anjing</h5>
+        <h5 class="section-title">Tentang Metode Dempster Shafer Pada Sistem Pakar Diagnosis Penyakit Kulit Anjing</h5>
         <div class="row align-items-center">
             <div class="col-md-12 text-center">
                 <img src="assets/icon4.png" alt="Icon Metode Dempster Shafer" class="img-fluid" style="max-width: 320px;">
