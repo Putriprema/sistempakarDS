@@ -98,12 +98,12 @@
     padding: 1.5vw 3vw; /* Padding responsif */
     text-decoration: none; /* Hapus garis bawah */
     border-radius: 30px; /* Corner radius button */
-    width: 20vw; /* Lebar button responsif berdasarkan viewport */
-    max-width: 290px; /* Lebar maksimal button */
+    width: 90vw; /* Lebar button responsif berdasarkan viewport */
+    max-width: 700px; /* Lebar maksimal button */
     height: 7vh; /* Tinggi button responsif berdasarkan viewport */
     max-height: 70px; /* Tinggi maksimal button */
-    font-size: 2vw; /* Ukuran font responsif berdasarkan viewport */
-    max-font-size: 20px; /* Ukuran maksimal font */
+    font-size: 1vw; /* Ukuran font responsif berdasarkan viewport */
+    max-font-size: 12px; /* Ukuran maksimal font */
     font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
     font-weight: 600; /* Menjadikan teks bold */
     margin-top: 20px; /* Jarak atas button */
@@ -112,6 +112,20 @@
     justify-content: center; /* Horizontal center icon dan teks */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan button */
 }
+/* Mengatur ukuran ikon paw menjadi 20px x 20px di dalam tombol */
+.custom-btn .paw-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; /* Memastikan aspek rasio gambar tetap terjaga */
+    transition: transform 0.6s ease-in-out; /* Animasi transisi saat hover */
+    margin-left: 10px; /* Jarak antara teks dan ikon */
+}
+
+/* Efek hover untuk ikon paw di tombol */
+.custom-btn:hover .paw-icon {
+    transform: translateX(5px); /* Menggeser ikon ke kanan saat hover */
+}
+
 
 .custom-btn:hover {
     background-color: #6CBED2; /* Warna latar belakang saat hover */
@@ -121,7 +135,7 @@
 /* Media queries untuk layar besar */
 @media (min-width: 1200px) {
     .custom-btn {
-        width: 290px;
+        width: 300px;
         height: 70px;
         font-size: 20px;
         padding: 10px 20px;
@@ -132,29 +146,62 @@
 @media (max-width: 992px) {
     .custom-btn {
         width: 30vw;
-        height: 6vh;
-        font-size: 2.5vw;
+        height: 3vh;
+        font-size: 2vw;
     }
 }
 
 /* Media queries untuk smartphone */
 @media (max-width: 576px) {
     .custom-btn {
-        width: 40vw;
-        height: 9vh;
-        font-size: 3vw;
+        width: 30vw;
+        height: 12vh;
+        font-size: 2vw;
     }
 }
 
 /* Media queries untuk layar sangat kecil */
 @media (max-width: 400px) {
     .custom-btn {
-        width: 50vw;
+        width: 30vw;
         height: 10vh;
-        font-size: 4vw;
+        font-size: 3vw;
     }
 }
 
+  /* Media queries untuk layar hp dengan max-width 1080px dan max-height 2400px */
+  @media (max-width: 1080px) and (max-height: 2400px) {
+            .custom-btn {
+                width: 30vw;
+                height: 3vh;
+                font-size: 2vw;
+            }
+
+            .content h1 {
+                font-size: 2.5rem;
+            }
+
+            .content h2 {
+                font-size: 2rem;
+            }
+
+            .content h3 {
+                font-size: 1.8rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin: 40px 0 30px 0;
+            }
+
+            .centered-paragraph {
+                font-size: 0.9rem;
+            }
+        }
 
         /* Menghilangkan bingkai pada navbar */
         .navbar {
@@ -287,7 +334,7 @@
             font-size: 18pt; /* Ukuran font */
             color: #333; /* Warna teks */
             line-height: 1.6; /* Jarak antar baris */
-            text-align: justify; /* Teks di tengah */
+            
             max-width: 800px; /* Maksimum lebar teks */
             margin: 0 auto; /* Margin otomatis untuk teks berada di tengah */
             margin-top: 30px; /* Jarak atas paragraf */
@@ -353,45 +400,12 @@
                 </ul>
 				
                 <ul class="nav navbar-nav navbar-right">					 
-    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="border-radius: 12px; font-size: 11.1pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
+    <li><a href="halaman_loginadmin.php" class="btn btn-primary navbar-btn" style="margin-left: 10px; ;border-radius: 12px; font-size: 11.1pt; width: 200px; height: 35px; display: inline-flex; justify-content: center; align-items: center;">Login Sebagai Admin</a></li>
 </ul>
 
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>	
-
-   
-    <div class="modal fade" id="modal-daftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal Daftar</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control">
-                        </div>						
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Daftar</button>
-                </div>
-            </div>
-        </div>
-    </div>
- 
 
     <!-- tampilan home utama -->
     <div class="background-container">
@@ -436,12 +450,12 @@
     <!-- Bagian baru: Apa Itu Penyakit Kulit Pada Anjing -->
     <div class="container mt-5">
         <h4 class="section-title">Apa Itu Penyakit Kulit Pada Anjing?</h4>
-        <div class="row align-items-center">
+        <div>
+        <div class="col-md-6 text-center">
+                <img src="assets/icon3.png" alt="Gambar Anjing" class="img-fluid" style="max-width: 350px;">
+            </div>
             <div class="col-md-6">
                 <p class="section-paragraph">Penyakit Kulit Pada Anjing adalah penyakit kulit dengan kasus angka kejadian cukup tinggi yang dapat disebabkan oleh beberapa agen seperti bakteri, virus, jamur, ektoparasit, dan juga kondisi perolehan dari lingkungan.</p>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="assets/icon3.png" alt="Gambar Anjing" class="img-fluid" style="max-width: 350px;">
             </div>
         </div>
     </div>
@@ -449,7 +463,7 @@
     <!-- bagian penjelasan metode DS -->
     <div class="container mt-5">
         <h5 class="section-title">Tentang Metode Dempster Shafer Pada Sistem Pakar Diagnosis Penyakit Kulit Anjing</h5>
-        <div class="row align-items-center">
+        <div>
             <div class="col-md-12 text-center">
                 <img src="assets/icon4.png" alt="Icon Metode Dempster Shafer" class="img-fluid" style="max-width: 320px;">
             </div>

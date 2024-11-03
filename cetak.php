@@ -115,13 +115,13 @@ $hasilDiagnosis = !empty($hasilDiagnosa) ? implode("<br>", $hasilDiagnosa) : "Da
                 <td><?php echo $hasilDiagnosis; ?></td>
             </tr>
             <tr>
-                <th>Tanggal/Waktu Diagnose</th>
+                <th>Tanggal/Waktu Diagnosis</th>
                 <td><?php echo $tanggalDiagnose; ?></td>
             </tr>
         </table>
 
         <div class="text-center">
-            <button onclick="window.print();" class="btn btn-primary">Cetak Laporan</button>
+            <button onclick="window.print();" class="btn btn-primary" style="background-color: #90B5BE; border-color: #90B5BE;">Cetak Laporan</button>
         </div>
     </div>
 </body>

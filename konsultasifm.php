@@ -236,7 +236,7 @@ while($row=$result->fetch_object()){
 ?><br>
  <center>
  <div class="d-flex justify-content-between">
-    <input type="submit" value="Proses Diagnosis Penyakit" class="btn btn-success" style="margin-bottom: 15px;">
+    <input type="submit" value="Proses Diagnosis Penyakit" class="btn btn-success" style="margin-bottom: 15px; background-color: #90B5BE; border-color: #90B5BE;">
     <button type="button" class="btn btn-warning" style="margin-bottom: 15px;" onclick="resetForm()">Ulangi</button>
 </div>
 </center>
@@ -498,11 +498,6 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
         $result=$db->query($sql); 
         $row=$result->fetch_row(); 
         echo "Terdeteksi penyakit <b>{$row[0]}</b> dengan derajat kepercayaan ".round($densitas_baru[$codes[0]]*100,2)."%";
-        echo "<p style='text-align:center; font-weight:bold; border:none;'>Persentase Kesimpulan</p>";
-        echo "<p style='text-align:justify; border:none;'>0%-50%   : Sedikit Kemungkinan atau Kemungkinan Kecil</p>";
-        echo "<p style='text-align:justify; border:none;'>51%-79%  : Pasti</p>";
-        echo "<p style='text-align:justify; border:none;'>80%-90%  : Kemungkinan Besar</p>";
-        echo "<p style='text-align:justify; border:none;'>91%-100% : Kemungkinan Besar</p>";
  
     }
   }
@@ -513,7 +508,7 @@ $queryP=mysqli_query($koneksi,"SELECT * FROM tb_penyakit"); while($dataP=mysqli_
   </tr>
 </table>
 <div class="form-group text-center">
-    <a href="cetak.php" class="btn btn-success btn-cetak">Cetak Hasil</a>
+    <a href="cetak.php" class="btn btn-success btn-cetak" style="background-color: #90B5BE; border-color: #90B5BE;">Cetak Hasil</a>
 </div>
 
 			</center>

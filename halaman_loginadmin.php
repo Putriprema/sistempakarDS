@@ -126,7 +126,7 @@ h2,
                     </span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block" style="background-color: #90B5BE; border-color: #90B5BE;">Login</button>
         </form>
 
         <!-- Tambahkan link kembali ke halaman index -->
